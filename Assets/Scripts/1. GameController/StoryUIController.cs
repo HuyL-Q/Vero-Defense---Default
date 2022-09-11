@@ -102,7 +102,7 @@ public class StoryUIController : MonoBehaviour
         StartCoroutine(CheckTowerPrice());
         buyTowerPanel.SetActive(true);
         //Vector3 offset = towerPlacement.GetComponent<PolygonCollider2D>().offset;
-        buyTowerPanel.transform.position = new(towerPlacement.position.x + 2.25f, towerPlacement.position.y + .5f, buyTowerPanel.transform.position.z);
+        buyTowerPanel.transform.position = new(towerPlacement.position.x + 1.25f, towerPlacement.position.y + 1f, buyTowerPanel.transform.position.z);
         buyTowerPanel.transform.localScale = new(0, 0, 0);
         buyTowerPanel.transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
         placementIndex = towerPlacementIndex;

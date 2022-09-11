@@ -66,6 +66,7 @@ public class TowerController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, towerPlacementLayer);
+            Debug.Log(hit.collider);
             if (hit.collider != null)
             {
                 if (hit.collider.CompareTag("TowerPlace"))
