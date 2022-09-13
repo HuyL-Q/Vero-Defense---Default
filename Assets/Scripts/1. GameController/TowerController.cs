@@ -4,31 +4,11 @@ using UnityEngine.EventSystems;
 
 public class TowerController : MonoBehaviour
 {
-
-    //int layerMarkMapTile;
-    //int layerMarkTower;
     public static TowerController Instance { get; set; }
-
-    //[SerializeField]
-    //GameObject buyTowerPanel;
-    //[SerializeField]
-    //private GameObject upgradePanel;
-    //[SerializeField]
-    //private GameObject upgradePanel2;
-    //[SerializeField]
-    //private Text sellText;
-    //[SerializeField]
-    //private Text upgradeText;
     [SerializeField]
     LayerMask towerPlacementLayer;
     [SerializeField]
     LayerMask towerLayer;
-    //private ATower selectedTower;
-    //private Transform tilePosition;
-    //private string nextLevelId;
-    //RaycastHit2D hit;
-    //RaycastHit2D hit2;
-
     private void Awake()
     {
         if (Instance == null)
@@ -42,20 +22,7 @@ public class TowerController : MonoBehaviour
     }
     void Start()
     {
-        //gameObject.AddComponent<ArcherTowerFactory>();
-        //if (Instance == null)
-        //{
-        //    Instance = this;
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-        //gameObject.AddComponent<ArcherTowerFactory>();
-        //gameObject.AddComponent<CatapultTowerFactory>();
-        //gameObject.AddComponent<HeroTowerFactory>();
-        //layerMarkMapTile = ~LayerMask.GetMask("Tower"); //get the layer not Tower
-        //layerMarkTower = ~LayerMask.GetMask("MapTile"); //get the layer not MapTile
+
     }
 
 
@@ -66,7 +33,6 @@ public class TowerController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, towerPlacementLayer);
-            Debug.Log(hit.collider);
             if (hit.collider != null)
             {
                 if (hit.collider.CompareTag("TowerPlace"))

@@ -28,7 +28,7 @@ public class ObjectPool : MonoBehaviour
         {
             for (int i = 0; i < item.amountToPool; i++)
             {
-                GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                GameObject obj = (GameObject)Instantiate(item.objectToPool, GameObject.Find("Enemy").transform);
                 obj.SetActive(false);
                 pooledObjects.Add(obj);
             }
@@ -37,7 +37,6 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetPooledObject(string tag)
     {
-        Debug.Log(pooledObjects[0]);
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].CompareTag(tag))
@@ -52,7 +51,7 @@ public class ObjectPool : MonoBehaviour
             {
                 if (item.shouldExpand)
                 {
-                    GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                    GameObject obj = (GameObject)Instantiate(item.objectToPool, GameObject.Find("Enemy").transform);
                     obj.SetActive(false);
                     pooledObjects.Add(obj);
                     return obj;

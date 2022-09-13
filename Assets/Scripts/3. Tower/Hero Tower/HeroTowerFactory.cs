@@ -14,4 +14,9 @@ public class HeroTowerFactory : AbstractFactoryTower
             throw new System.ArgumentException("Prefab does not existed.");
         }
     }
+
+    public override void CreateTower(Transform tower, Vector3 position, int placementIndex, string id)
+    {
+        throw new System.NotImplementedException();
+    }
 }

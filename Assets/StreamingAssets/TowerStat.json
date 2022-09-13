@@ -48,7 +48,7 @@
   {
     "id": "tower_archer_4_2",
     "attack": 50,
-    "attackSpeed": 1.5,
+    "attackSpeed": 0.1,
     "range": 2,
     "Special": [
       "Aff_05"

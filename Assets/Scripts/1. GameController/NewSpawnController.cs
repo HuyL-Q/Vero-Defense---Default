@@ -6,15 +6,13 @@ public class NewSpawnController : MonoBehaviour
 {
     [SerializeField]
     List<GameObject> spawnStartPos;
-    //[SerializeField]
-    //List<GameObject> enemyToSpawn;
     private int waveIndex;
     private bool isWaveEnded;
     [SerializeField]
     private int numOfEnemies;
     [SerializeField]
     private int currentNumOfEnemies;
-    public int WaveIndex { get => waveIndex; }
+    public int WaveIndex { get => waveIndex; set => waveIndex = value; }
     public bool IsWaveEnded { get => isWaveEnded; }
 
     public static NewSpawnController Instance { get; private set; }
@@ -46,6 +44,8 @@ public class NewSpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(numOfEnemies);
+        //Debug.Log(currentNumOfEnemies);
         if(GameController.instance.State == State.End_Defeat)
         {
             StopCoroutine(SpawnWave());
@@ -67,6 +67,7 @@ public class NewSpawnController : MonoBehaviour
     IEnumerator SpawnWave()
     {
         waveIndex++;
+        Debug.Log("SpawnWave" + waveIndex);
         StoryUIController.instance.UpdateWaveIndex();
         for (int i = 0; i < NumOfEnemies; i++)
         {

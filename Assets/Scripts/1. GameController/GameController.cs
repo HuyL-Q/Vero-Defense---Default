@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
+
+public enum State { Prestart, Start, End_Defeat, End_Victory, Pause };
 public class PlayerStat
 {
     private int health;
@@ -19,6 +22,7 @@ public class PlayerStat
 
 }
 public class PlayerStatsConverter : JsonConverter<PlayerStat> { }
+public class GameObjectConverter : JsonConverter<SaveGame> { }
 public class GameController : MonoBehaviour
 {
     int playerLives;
@@ -68,5 +72,44 @@ public class GameController : MonoBehaviour
             State = State.End_Defeat;
             Time.timeScale = 0;
         }
+    }
+    public void SaveData()
+    {
+        //SaveGame.Instance.lives = GameController.instance.PlayerLives;
+        //SaveGame.Instance.money = GameController.instance.PlayerMoney;
+        //SaveGame.Instance.playerPoint = GameController.instance.PlayerPoint;
+        //SaveGame.Instance.state = GameController.instance.State;
+        //SaveGame.Instance.stageIndex = NewSpawnController.Instance.WaveIndex;
+        //GameObjectConverter converter = new GameObjectConverter();
+        //converter.setCurrentDir(@"/data.json");
+        //List<TowerData> ls = new List<TowerData>();
+        //Transform tr = GameObject.Find("Tower In Screen").transform;
+        //for (int i = 0; i < tr.childCount; i++)
+        //{
+        //    ls.Add(new TowerData(tr.GetChild(i).gameObject));
+        //}
+        //SaveGame.Instance.ls = ls;
+        //converter.createJSON(SaveGame.Instance);
+    }
+    public void LoadData()
+    {
+        //AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("GamePlay");
+        //changeData();
+    }
+    void changeData()
+    {
+        GameObjectConverter converter = new GameObjectConverter();
+        converter.setCurrentDir(@"/data.json");
+        SaveGame.Instance = converter.getObjectFromJSON();
+        foreach (TowerData data in SaveGame.Instance.ls)
+        {
+            TowerManager.instance.SetTower(data.towerPlacementIndex, data.id);
+        }
+        GameController.instance.PlayerLives = SaveGame.Instance.lives;
+        GameController.instance.PlayerMoney = SaveGame.Instance.money;
+        GameController.instance.PlayerPoint = SaveGame.Instance.playerPoint;
+        GameController.instance.State = SaveGame.Instance.state;
+        NewSpawnController.Instance.WaveIndex = SaveGame.Instance.stageIndex;
+        //reset stage using stageindex
     }
 }

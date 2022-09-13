@@ -15,6 +15,7 @@ public abstract class JsonConverter<T>
             NullValueHandling = NullValueHandling.Ignore,
             MissingMemberHandling = MissingMemberHandling.Ignore
         };
+        //Debug.Log(Object.ToString());
         var object_string = JsonConvert.SerializeObject(Object, settings);
         File.WriteAllText(CurrentDirectory, object_string);
     }

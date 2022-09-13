@@ -117,6 +117,7 @@ public abstract class ATower : MonoBehaviour, ITower
     {
         //Vector3.
         GameObject arrowGO = objectPool.Get();
+        arrowGO.transform.parent = GameObject.Find("Arrow").transform;
         arrowGO.transform.localScale = new(5, 5, 5);
         arrowGO.transform.position = ShootPosition;
         //arrowGO.transform.localScale = transform.localScale;

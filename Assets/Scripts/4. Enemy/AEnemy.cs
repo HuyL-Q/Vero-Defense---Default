@@ -188,9 +188,9 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         HP -= dmg;
         if (HP <= 0)
         {
-            NewSpawnController.Instance.CurrentNumOfEnemies--;
+            //NewSpawnController.Instance.CurrentNumOfEnemies--;
             Agent.isStopped = true;
-            GiveReward();
+            //GiveReward();
             Animator.SetTrigger(Dead);
         }
     }
@@ -214,6 +214,8 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
 
     public void Die()
     {
+        GiveReward();
+        NewSpawnController.Instance.CurrentNumOfEnemies--;
         gameObject.SetActive(false);
     }
 

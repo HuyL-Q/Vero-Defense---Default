@@ -54,9 +54,7 @@ public class TowerManager : MonoBehaviour
     {
         TowerPriceConverter converter = new();
         converter.setCurrentDir(@"/TowerStat.json");
-        UnityWebRequest uwr = UnityWebRequest.Get(converter.CurrentDirectory);
-        yield return uwr.SendWebRequest();
-        List<Tower> towers = converter.getObjectfromText(uwr.downloadHandler.text);
+        List<Tower> towers = converter.getObjectFromJSON();
         foreach (Tower tower in towers)
         {
             if (tower.id.Contains("archer_1"))
@@ -65,15 +63,25 @@ public class TowerManager : MonoBehaviour
                 btnBuyArcher.transform.GetChild(0).GetComponent<Text>().text = ArcherPrice.ToString();
             }
         }
+        yield return null;
     }
 
     public void SetTower(int placementIndex)
     {
         Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
         Vector3 pos = towerPlace.position;
-        pos.x += 1f;
         pos.y -= .75f;
         archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex);
+        towerPlace.gameObject.SetActive(false);
+        GameController.instance.PlayerMoney -= ArcherPrice;
+        StoryUIController.instance.UpdateGoldIndex();
+    }
+    public void SetTower(int placementIndex, string id)
+    {
+        Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
+        Vector3 pos = towerPlace.position;
+        pos.y -= .75f;
+        archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex, id);
         towerPlace.gameObject.SetActive(false);
         GameController.instance.PlayerMoney -= ArcherPrice;
         StoryUIController.instance.UpdateGoldIndex();
