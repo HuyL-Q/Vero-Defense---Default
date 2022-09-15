@@ -30,7 +30,7 @@ public class TowerManager : MonoBehaviour
     ArcherTowerFactory archerTowerFactory;
     public static TowerManager instance;
     public int ArcherPrice { get => archerPrice; set => archerPrice = value; }
-    public GameObject TowerPlacementParent { get => towerPlacementParent; }
+    public GameObject TowerPlacementParent { get => towerPlacementParent; set => towerPlacementParent = value;}
 
     private void Awake()
     {

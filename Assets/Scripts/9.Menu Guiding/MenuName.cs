@@ -6,9 +6,4 @@ public enum MenuName
 {
     Main,
     Gameplay,
-    Equipment,
-    Marketplace,
-    Event,
-    Mail,
-    TransferMoney
 }

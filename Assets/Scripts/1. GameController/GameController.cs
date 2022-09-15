@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     float playerMoney;
     float playerPoint;
     State state;
+    public bool flag = false;
 
     public int PlayerLives { get => playerLives; set => playerLives = value; }
     public float PlayerMoney { get => playerMoney; set => playerMoney = value; }
@@ -46,12 +47,14 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //DontDestroyOnLoad(instance);
     }
     // Start is called before the first frame update
     void Start()
     {
         State = State.Prestart;
         ReadStatFromFile();
+        flag = true;
     }
 
     void ReadStatFromFile()
@@ -75,32 +78,28 @@ public class GameController : MonoBehaviour
     }
     public void SaveData()
     {
-        //SaveGame.Instance.lives = GameController.instance.PlayerLives;
-        //SaveGame.Instance.money = GameController.instance.PlayerMoney;
-        //SaveGame.Instance.playerPoint = GameController.instance.PlayerPoint;
-        //SaveGame.Instance.state = GameController.instance.State;
-        //SaveGame.Instance.stageIndex = NewSpawnController.Instance.WaveIndex;
-        //GameObjectConverter converter = new GameObjectConverter();
-        //converter.setCurrentDir(@"/data.json");
-        //List<TowerData> ls = new List<TowerData>();
-        //Transform tr = GameObject.Find("Tower In Screen").transform;
-        //for (int i = 0; i < tr.childCount; i++)
-        //{
-        //    ls.Add(new TowerData(tr.GetChild(i).gameObject));
-        //}
-        //SaveGame.Instance.ls = ls;
-        //converter.createJSON(SaveGame.Instance);
+        SaveGame.Instance.lives = GameController.instance.PlayerLives;
+        SaveGame.Instance.money = GameController.instance.PlayerMoney;
+        SaveGame.Instance.playerPoint = GameController.instance.PlayerPoint;
+        SaveGame.Instance.state = GameController.instance.State;
+        SaveGame.Instance.stageIndex = NewSpawnController.Instance.WaveIndex - 1;
+        GameObjectConverter converter = new GameObjectConverter();
+        converter.setCurrentDir(@"/data.json");
+        List<TowerData> ls = new List<TowerData>();
+        Transform tr = GameObject.Find("Tower In Screen").transform;
+        for (int i = 0; i < tr.childCount; i++)
+        {
+            ls.Add(new TowerData(tr.GetChild(i).gameObject));
+        }
+        SaveGame.Instance.ls = ls;
+        converter.createJSON(SaveGame.Instance);
     }
     public void LoadData()
-    {
-        //AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("GamePlay");
-        //changeData();
-    }
-    void changeData()
     {
         GameObjectConverter converter = new GameObjectConverter();
         converter.setCurrentDir(@"/data.json");
         SaveGame.Instance = converter.getObjectFromJSON();
+
         foreach (TowerData data in SaveGame.Instance.ls)
         {
             TowerManager.instance.SetTower(data.towerPlacementIndex, data.id);
@@ -110,6 +109,7 @@ public class GameController : MonoBehaviour
         GameController.instance.PlayerPoint = SaveGame.Instance.playerPoint;
         GameController.instance.State = SaveGame.Instance.state;
         NewSpawnController.Instance.WaveIndex = SaveGame.Instance.stageIndex;
+        flag = true;
         //reset stage using stageindex
     }
 }

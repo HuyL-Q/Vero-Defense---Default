@@ -35,7 +35,7 @@ public class NewSpawnController : MonoBehaviour
     void Start()
     {
         isWaveEnded = true;
-        waveIndex = 0;
+            waveIndex = 0;
         numOfEnemies = 3;
         CurrentNumOfEnemies = NumOfEnemies;
         gameObject.AddComponent<MinionFactory>();
@@ -44,12 +44,16 @@ public class NewSpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(numOfEnemies);
-        //Debug.Log(currentNumOfEnemies);
-        if(GameController.instance.State == State.End_Defeat)
+        StartCoroutine(wait());
+    }
+    IEnumerator wait()
+    {
+        numOfEnemies = waveIndex + 2;
+        yield return new WaitUntil(() => (GameController.instance.flag));
+        if (GameController.instance.State == State.End_Defeat)
         {
             StopCoroutine(SpawnWave());
-            return;
+            yield break;
         }
         if (isWaveEnded)
         {
@@ -59,21 +63,20 @@ public class NewSpawnController : MonoBehaviour
         if (CurrentNumOfEnemies == 0)
         {
             isWaveEnded = true;
-            numOfEnemies++;
+            numOfEnemies = waveIndex + 2;
             CurrentNumOfEnemies = numOfEnemies;
+            yield return new WaitForSeconds(20);
         }
     }
 
     IEnumerator SpawnWave()
     {
         waveIndex++;
-        Debug.Log("SpawnWave" + waveIndex);
         StoryUIController.instance.UpdateWaveIndex();
         for (int i = 0; i < NumOfEnemies; i++)
         {
             gameObject.GetComponent<MinionFactory>().CreateEnemy(spawnStartPos[Random.Range(0, spawnStartPos.Count)]);
-            yield return new WaitForSeconds(1.5f);
-            //Instantiate(enemyToSpawn[Random.Range(0, enemyToSpawn.Count)], spawnStartPos[Random.Range(0, spawnStartPos.Count)].transform);
+            yield return new WaitForSeconds(.5f);
         }
     }
 }
