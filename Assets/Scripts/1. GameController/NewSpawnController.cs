@@ -44,7 +44,7 @@ public class NewSpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(numOfEnemies);
+        //Debug.Log(numOfEnemies);
         //Debug.Log(currentNumOfEnemies);
         if(GameController.instance.State == State.End_Defeat)
         {
@@ -67,7 +67,7 @@ public class NewSpawnController : MonoBehaviour
     IEnumerator SpawnWave()
     {
         waveIndex++;
-        Debug.Log("SpawnWave" + waveIndex);
+        //Debug.Log("SpawnWave" + waveIndex);
         StoryUIController.instance.UpdateWaveIndex();
         for (int i = 0; i < NumOfEnemies; i++)
         {

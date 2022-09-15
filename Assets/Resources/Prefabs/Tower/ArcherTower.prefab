@@ -584,6 +584,7 @@ MonoBehaviour:
   monsters: []
   rangeIndicator: {fileID: 6799803504589756475}
   attackSpeed: 0
+  flag: 0
 --- !u!50 &6130261473284268244
 Rigidbody2D:
   serializedVersion: 4

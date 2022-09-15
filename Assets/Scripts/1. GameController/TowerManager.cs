@@ -25,11 +25,15 @@ public class TowerManager : MonoBehaviour
     [SerializeField]
     GameObject btnBuyArcher;
     [SerializeField]
+    GameObject btnBuyHero;
+    [SerializeField]
     Transform towerParent;
     int archerPrice;
     ArcherTowerFactory archerTowerFactory;
+    HeroTowerFactory heroTowerFactory;
     public static TowerManager instance;
     public int ArcherPrice { get => archerPrice; set => archerPrice = value; }
+    public int HeroPrice { get => archerPrice; set => archerPrice = value; }
     public GameObject TowerPlacementParent { get => towerPlacementParent; }
 
     private void Awake()
@@ -47,6 +51,7 @@ public class TowerManager : MonoBehaviour
     void Start()
     {
         archerTowerFactory = GetComponent<ArcherTowerFactory>();
+        heroTowerFactory = GetComponent<HeroTowerFactory>();
         StartCoroutine(FetchTowerPrice());
     }
 
@@ -62,16 +67,29 @@ public class TowerManager : MonoBehaviour
                 ArcherPrice = tower.Cost;
                 btnBuyArcher.transform.GetChild(0).GetComponent<Text>().text = ArcherPrice.ToString();
             }
+            if (tower.id.Contains("hero_1"))
+            {
+                HeroPrice = tower.Cost;
+                btnBuyHero.transform.GetChild(0).GetComponent<Text>().text = HeroPrice.ToString();
+            }
         }
         yield return null;
     }
 
-    public void SetTower(int placementIndex)
+    public void SetTower(int placementIndex, int index)
     {
         Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
         Vector3 pos = towerPlace.position;
         pos.y -= .75f;
-        archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex);
+        switch(index){
+            case 1:
+                archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex);
+                break;
+            case 2:
+                heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex);
+                break;
+        }
+        
         towerPlace.gameObject.SetActive(false);
         GameController.instance.PlayerMoney -= ArcherPrice;
         StoryUIController.instance.UpdateGoldIndex();

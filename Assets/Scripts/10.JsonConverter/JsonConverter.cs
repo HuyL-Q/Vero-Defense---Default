@@ -26,6 +26,7 @@ public abstract class JsonConverter<T>
     }
     public T getObjectFromJSON()
     {
+        Debug.Log(CurrentDirectory);
         T arr2 = JsonConvert.DeserializeObject<T>(File.ReadAllText(CurrentDirectory));
         return arr2;
     }

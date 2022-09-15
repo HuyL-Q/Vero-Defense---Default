@@ -126,5 +126,16 @@
     "width": 2,
     "height": 2,
     "bulletID": "bullet_id"
+  },
+  {
+    "id": "tower_hero_1",
+    "attack": 12,
+    "attackSpeed": 0.8,
+    "range": 5,
+    "Special": [],
+    "Cost": 100,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
   }
 ]

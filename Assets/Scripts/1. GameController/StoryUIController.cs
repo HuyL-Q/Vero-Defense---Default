@@ -137,7 +137,7 @@ public class StoryUIController : MonoBehaviour
         upgradeAndSellPanel.transform.localScale = new(0, 0, 0);
         upgradeAndSellPanel.transform.DOScale(1, .5f).SetEase(Ease.OutBack);
         currentTower = tower;
-        placementIndex = tower.GetComponent<ArcherTower>().PlacementIndex;
+        placementIndex = tower.GetComponent<ATower>().PlacementIndex;
         OpenAttackRange(currentTower);
     }
     List<int> priceToUpgrades = new();
@@ -145,12 +145,12 @@ public class StoryUIController : MonoBehaviour
     public void SetUpgradeAndSellPrice(GameObject tower)
     {
         priceToUpgrades.Clear();
-        int count = tower.GetComponent<ArcherTower>().PriceToUpgrade.Count;
+        int count = tower.GetComponent<ATower>().PriceToUpgrade.Count;
         if (count > 1)
         {
             upgradeAndSellPanel.transform.GetChild(1).gameObject.SetActive(false);
-            priceToUpgrades.Add(tower.GetComponent<ArcherTower>().PriceToUpgrade[0]);
-            priceToUpgrades.Add(tower.GetComponent<ArcherTower>().PriceToUpgrade[1]);
+            priceToUpgrades.Add(tower.GetComponent<ATower>().PriceToUpgrade[0]);
+            priceToUpgrades.Add(tower.GetComponent<ATower>().PriceToUpgrade[1]);
             upgradeAndSellPanel.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = priceToUpgrades[0].ToString();
             upgradeAndSellPanel.transform.GetChild(2).gameObject.SetActive(true);
             upgradeAndSellPanel.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = priceToUpgrades[1].ToString();
@@ -159,7 +159,7 @@ public class StoryUIController : MonoBehaviour
         }
         else if (count > 0)
         {
-            priceToUpgrades.Add(tower.GetComponent<ArcherTower>().PriceToUpgrade[0]);
+            priceToUpgrades.Add(tower.GetComponent<ATower>().PriceToUpgrade[0]);
             upgradeAndSellPanel.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = priceToUpgrades[0].ToString();
             upgradeAndSellPanel.transform.GetChild(1).gameObject.SetActive(true);
             upgradeAndSellPanel.transform.GetChild(2).gameObject.SetActive(false);
@@ -172,7 +172,7 @@ public class StoryUIController : MonoBehaviour
             upgradeAndSellPanel.transform.GetChild(2).gameObject.SetActive(false);
             upgradeAndSellPanel.transform.GetChild(3).gameObject.SetActive(false);
         }
-        priceToSell = tower.GetComponent<ArcherTower>().Price / 2;
+        priceToSell = tower.GetComponent<ATower>().Price / 2;
         upgradeAndSellPanel.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = priceToSell.ToString();
     }
     IEnumerator CheckUpgradeTwoBranchPrice()
@@ -251,12 +251,9 @@ public class StoryUIController : MonoBehaviour
     {
         StopCoroutine(CheckTowerPrice());
         CloseBuyTower();
-        switch (index)
-        {
-            case 1:
-                TowerManager.instance.SetTower(placementIndex);
-                break;
-        }
+    
+        TowerManager.instance.SetTower(placementIndex, index);
+                
     }
 
     public void PauseButton()

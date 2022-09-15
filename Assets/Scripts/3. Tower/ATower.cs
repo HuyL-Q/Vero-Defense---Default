@@ -75,6 +75,9 @@ public abstract class ATower : MonoBehaviour, ITower
     public List<TowerJs> IdList { get => idList; set => idList = value; }
     public int PlacementIndex { get => placementIndex; set => placementIndex = value; }
     public GameObject RangeIndicator { get => rangeIndicator; }
+    List<int> priceToUpgrade = new List<int>();
+    public List<int> PriceToUpgrade { get => priceToUpgrade; }
+    public double ShootTimer { get => shootTimer; set => shootTimer = value; }
 
     public class TowerJs
     {
