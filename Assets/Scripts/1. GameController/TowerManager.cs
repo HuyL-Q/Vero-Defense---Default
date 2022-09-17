@@ -87,17 +87,18 @@ public class TowerManager : MonoBehaviour
     public void SetTower(int placementIndex, int index)
     {
         Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
+        Debug.Log(towerPlace);
         Vector3 pos = towerPlace.position;
-        pos.y -= .75f;
+        pos.y += .25f;
         switch(index){
-            case 1:
+            case 0:
                 archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex);
                 break;
-            case 2:
+            case 1:
                 heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, index);
                 break;
-            case 3:
-                heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, index+3);
+            case 2:
+                heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, index+1);
                 break;
         }
         

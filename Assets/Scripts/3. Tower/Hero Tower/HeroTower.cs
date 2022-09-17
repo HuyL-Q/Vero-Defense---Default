@@ -40,10 +40,6 @@ public class HeroTower : ATower
                 Size = tower.height;
                 //Data = true;
             }
-            if (tower.id.Contains(nextID))
-            {
-                PriceToUpgrade.Add(tower.Cost);
-            }
         }
         flag = true;
         transform.GetChild(2).localScale = new Vector2(Range, Range);

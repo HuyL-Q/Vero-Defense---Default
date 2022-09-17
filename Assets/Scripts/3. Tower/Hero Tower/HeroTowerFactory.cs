@@ -19,7 +19,7 @@ public class HeroTowerFactory : AbstractFactoryTower
     public  void CreateTower(Transform tower, Vector3 position, int placementIndex, int index)
     {
         Debug.Log(position + " " + placementIndex);
-        var towerGO = Instantiate(heroTowerPrefab[index-2], tower);
+        var towerGO = Instantiate(heroTowerPrefab[index-1], tower);
         towerGO.transform.position = position;
         towerGO.GetComponent<HeroTower>().PlacementIndex = placementIndex;   
     }
