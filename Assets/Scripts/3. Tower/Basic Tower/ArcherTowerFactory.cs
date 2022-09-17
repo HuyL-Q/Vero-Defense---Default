@@ -32,4 +32,5 @@ public class ArcherTowerFactory : AbstractFactoryTower
         if (towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).childCount > 0)
             towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).GetChild(int.Parse(idls[3]) - 1).gameObject.SetActive(true);
     }
+
 }

@@ -5,24 +5,34 @@ public class HeroTowerFactory : AbstractFactoryTower
     [SerializeField]
     GameObject basicTowerPrefab;
 
+    [SerializeField]
+    GameObject[] heroTowerPrefab;
+
     public override void CreateTower(Transform tower, Vector3 position, int placementIndex)
     {
         Debug.Log(position + " " + placementIndex);
         var towerGO = Instantiate(basicTowerPrefab, tower);
         towerGO.transform.position = position;
-        towerGO.GetComponent<HeroTower>().PlacementIndex = placementIndex;
-        //tower.GetComponent<ArcherTower>().SetTower(id);
-        //Debug.Log(PlayerStats.Money);//UI Design
+        towerGO.GetComponent<HeroTower>().PlacementIndex = placementIndex;   
+    }
+
+    public  void CreateTower(Transform tower, Vector3 position, int placementIndex, int index)
+    {
+        Debug.Log(position + " " + placementIndex);
+        var towerGO = Instantiate(heroTowerPrefab[index-2], tower);
+        towerGO.transform.position = position;
+        towerGO.GetComponent<HeroTower>().PlacementIndex = placementIndex;   
     }
 
     public override void CreateTower(Transform tower, Vector3 position, int placementIndex, string id)
     {
-        var towerGO = Instantiate(basicTowerPrefab, tower);
+        string[] idls = id.Split('_');
+        var towerGO = Instantiate(heroTowerPrefab[int.Parse(idls[2])-1], tower);
         towerGO.transform.position = position;
         towerGO.GetComponent<HeroTower>().PlacementIndex = placementIndex;
         StartCoroutine(towerGO.GetComponent<HeroTower>().SetTower(id));
         //towerGO.GetComponent<SpriteRenderer>().sprite//level up
-        string[] idls = id.Split('_');  
+          
         Transform towerLevelSprite = towerGO.transform.GetChild(0);
         for(int i = 0; i < towerLevelSprite.childCount; i++)
         {
@@ -32,4 +42,6 @@ public class HeroTowerFactory : AbstractFactoryTower
         if (towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).childCount > 0)
             towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).GetChild(int.Parse(idls[3]) - 1).gameObject.SetActive(true);
     }
+    
+
 }

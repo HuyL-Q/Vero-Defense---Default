@@ -25,7 +25,9 @@ public class TowerManager : MonoBehaviour
     [SerializeField]
     GameObject btnBuyArcher;
     [SerializeField]
-    GameObject btnBuyHero;
+    GameObject btnBuyHero1;
+    [SerializeField]
+    GameObject btnBuyHero2;
     [SerializeField]
     Transform towerParent;
     int archerPrice;
@@ -70,7 +72,13 @@ public class TowerManager : MonoBehaviour
             if (tower.id.Contains("hero_1"))
             {
                 HeroPrice = tower.Cost;
-                btnBuyHero.transform.GetChild(0).GetComponent<Text>().text = HeroPrice.ToString();
+                btnBuyHero1.transform.GetChild(0).GetComponent<Text>().text = HeroPrice.ToString();
+            }
+
+            if (tower.id.Contains("hero_2"))
+            {
+                HeroPrice = tower.Cost;
+                btnBuyHero2.transform.GetChild(0).GetComponent<Text>().text = HeroPrice.ToString();
             }
         }
         yield return null;
@@ -86,7 +94,10 @@ public class TowerManager : MonoBehaviour
                 archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex);
                 break;
             case 2:
-                heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex);
+                heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, index);
+                break;
+            case 3:
+                heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, index+3);
                 break;
         }
         

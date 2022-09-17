@@ -137,5 +137,84 @@
     "width": 2,
     "height": 2,
     "bulletID": "bullet_id"
+  },
+
+  {
+    "id": "tower_hero_2",
+    "attack": 12,
+    "attackSpeed": 0.8,
+    "range": 10,
+    "Special": [],
+    "Cost": 100,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
+  }, 
+  {
+    "id": "tower_hero_3",
+    "attack": 12,
+    "attackSpeed": 0.5,
+    "range": 8,
+    "Special": [],
+    "Cost": 150,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
+  },
+  {
+    "id": "tower_hero_4",
+    "attack": 12,
+    "attackSpeed": 0.5,
+    "range": 10,
+    "Special": [],
+    "Cost": 150,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
+  },
+  {
+    "id": "tower_hero_5",
+    "attack": 12,
+    "attackSpeed": 0.5,
+    "range": 10,
+    "Special": [],
+    "Cost": 150,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
+  },
+  {
+    "id": "tower_hero_6",
+    "attack": 12,
+    "attackSpeed": 0.5,
+    "range": 10,
+    "Special": [],
+    "Cost": 150,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
+  },
+  {
+    "id": "tower_hero_7",
+    "attack": 12,
+    "attackSpeed": 0.5,
+    "range": 10,
+    "Special": [],
+    "Cost": 150,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
+  },
+  {
+    "id": "tower_hero_8",
+    "attack": 12,
+    "attackSpeed": 0.5,
+    "range": 10,
+    "Special": [],
+    "Cost": 150,
+    "width": 2,
+    "height": 2,
+    "bulletID": "bullet_id"
   }
+  
 ]

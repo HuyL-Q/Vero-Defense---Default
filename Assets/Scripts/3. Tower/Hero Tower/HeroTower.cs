@@ -19,36 +19,6 @@ public class HeroTower : ATower
         return Size;
     }
     
-    public override void Start()
-    {
-        if(!flag)
-        StartCoroutine(SetTower("tower_hero_1"));
-        Animator = GetComponentInChildren<Animator>();
-        //Animator = GetComponent<Animator>();
-        base.Start();
-    }
-    
-    public void SetStatus()
-    {
-        AttackSpeed = 1;
-        Damage = 10;
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
-    public override bool Equals(object other)
-    {
-        return base.Equals(other);
-    }
-
-    public override string ToString()
-    {
-        return base.ToString();
-    }
-
     public override IEnumerator SetTower(string id)
     {
         PriceToUpgrade.Clear();
