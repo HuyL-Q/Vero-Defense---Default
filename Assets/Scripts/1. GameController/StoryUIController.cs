@@ -296,4 +296,14 @@ public class StoryUIController : MonoBehaviour
             MenuManager.MenuSwitch(MenuName.Main);
         });
     }
+    public void GameOverReplay()
+    {
+        GameObject.Find("UI").transform.GetChild(2).gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void GameOverMainMenu()
+    {
+        GameObject.Find("UI").transform.GetChild(2).gameObject.SetActive(false);
+        MenuManager.MenuSwitch(MenuName.Main);
+    }
 }

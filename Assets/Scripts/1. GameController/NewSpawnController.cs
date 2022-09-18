@@ -12,12 +12,14 @@ public class NewSpawnController : MonoBehaviour
     private int numOfEnemies;
     [SerializeField]
     private int currentNumOfEnemies;
+    //private float timeBetweenWave;
     public int WaveIndex { get => waveIndex; set => waveIndex = value; }
     public bool IsWaveEnded { get => isWaveEnded; }
 
     public static NewSpawnController Instance { get; private set; }
     public int CurrentNumOfEnemies { get => currentNumOfEnemies; set => currentNumOfEnemies = value; }
-    public int NumOfEnemies { get => numOfEnemies; }
+    public int NumOfEnemies { get => numOfEnemies; set => numOfEnemies = value;}
+    //public float TimeBetweenWave { get => timeBetweenWave; set => timeBetweenWave = value; }
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class NewSpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         StartCoroutine(wait());
     }
     IEnumerator wait()
@@ -54,6 +57,17 @@ public class NewSpawnController : MonoBehaviour
         {
             StopCoroutine(SpawnWave());
             yield break;
+=======
+        if (!GameController.instance.flag) return;
+        if (GameController.instance.State == State.End_Defeat)
+        {
+            StopCoroutine(SpawnWave());
+            GameObject.Find("UI").transform.GetChild(2).gameObject.SetActive(true);
+            GameObjectConverter converter = new();
+            converter.setCurrentDir(@"/data.json");
+            converter.DeleteData();
+            //yield break;
+>>>>>>> Stashed changes
         }
         if (isWaveEnded)
         {
@@ -62,11 +76,22 @@ public class NewSpawnController : MonoBehaviour
         }
         if (CurrentNumOfEnemies == 0)
         {
+<<<<<<< Updated upstream
             isWaveEnded = true;
             numOfEnemies = waveIndex + 2;
+=======
+            StartCoroutine(WaitForNewSpawn());
+            numOfEnemies = waveIndex + 3;
+>>>>>>> Stashed changes
             CurrentNumOfEnemies = numOfEnemies;
             yield return new WaitForSeconds(20);
         }
+    }
+
+    IEnumerator WaitForNewSpawn()
+    {
+        yield return new WaitForSeconds(5f);
+        isWaveEnded = true;
     }
 
     IEnumerator SpawnWave()
@@ -78,5 +103,6 @@ public class NewSpawnController : MonoBehaviour
             gameObject.GetComponent<MinionFactory>().CreateEnemy(spawnStartPos[Random.Range(0, spawnStartPos.Count)]);
             yield return new WaitForSeconds(.5f);
         }
+        //TimeBetweenWave = 5f;
     }
 }

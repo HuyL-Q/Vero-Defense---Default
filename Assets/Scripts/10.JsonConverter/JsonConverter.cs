@@ -19,6 +19,14 @@ public abstract class JsonConverter<T>
         var object_string = JsonConvert.SerializeObject(Object, settings);
         File.WriteAllText(CurrentDirectory, object_string);
     }
+    public string GetText()
+    {
+        return File.ReadAllText(CurrentDirectory);
+    }
+    public void DeleteData()
+    {
+        File.WriteAllText(CurrentDirectory, "");
+    }
     public T getObjectfromText(string t)
     {
         T arr2 = JsonConvert.DeserializeObject<T>(t);

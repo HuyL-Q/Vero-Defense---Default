@@ -27,8 +27,8 @@ public class TowerData
         x = Tower.transform.position.x;
         y = Tower.transform.position.y;
         z = Tower.transform.position.z;
-        towerPlacementIndex = Tower.GetComponent<ArcherTower>().PlacementIndex;
-        id = Tower.GetComponent<ArcherTower>().ID;
+        towerPlacementIndex = Tower.GetComponent<ATower>().PlacementIndex;
+        id = Tower.GetComponent<ATower>().ID;
     }
     public override string ToString()
     {

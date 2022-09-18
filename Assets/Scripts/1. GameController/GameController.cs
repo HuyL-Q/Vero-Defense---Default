@@ -54,9 +54,16 @@ public class GameController : MonoBehaviour
     {
         State = State.Prestart;
         ReadStatFromFile();
+<<<<<<< Updated upstream
+=======
+        StartCoroutine(wait());
+    }
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(0.6f);
+>>>>>>> Stashed changes
         flag = true;
     }
-
     void ReadStatFromFile()
     {
         PlayerStatsConverter statsConverter = new();
@@ -94,8 +101,26 @@ public class GameController : MonoBehaviour
         SaveGame.Instance.ls = ls;
         converter.createJSON(SaveGame.Instance);
     }
+    public static GameObject FindInActiveObjectByName(string name)
+    {
+<<<<<<< Updated upstream
+=======
+        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+        for (int i = 0; i < objs.Length; i++)
+        {
+            if (objs[i].hideFlags == HideFlags.None)
+            {
+                if (objs[i].name == name)
+                {
+                    return objs[i].gameObject;
+                }
+            }
+        }
+        return null;
+    }
     public void LoadData()
     {
+>>>>>>> Stashed changes
         GameObjectConverter converter = new GameObjectConverter();
         converter.setCurrentDir(@"/data.json");
         SaveGame.Instance = converter.getObjectFromJSON();
@@ -109,6 +134,10 @@ public class GameController : MonoBehaviour
         GameController.instance.PlayerPoint = SaveGame.Instance.playerPoint;
         GameController.instance.State = SaveGame.Instance.state;
         NewSpawnController.Instance.WaveIndex = SaveGame.Instance.stageIndex;
+<<<<<<< Updated upstream
+=======
+        NewSpawnController.Instance.NumOfEnemies = NewSpawnController.Instance.NumOfEnemies;
+>>>>>>> Stashed changes
         flag = true;
         //reset stage using stageindex
     }
