@@ -36,7 +36,7 @@ public class TowerManager : MonoBehaviour
     public static TowerManager instance;
     public int ArcherPrice { get => archerPrice; set => archerPrice = value; }
     public int HeroPrice { get => archerPrice; set => archerPrice = value; }
-    public GameObject TowerPlacementParent { get => towerPlacementParent; }
+    public GameObject TowerPlacementParent { get => towerPlacementParent; set => towerPlacementParent = value; }
 
     private void Awake()
     {
@@ -87,7 +87,6 @@ public class TowerManager : MonoBehaviour
     public void SetTower(int placementIndex, int index)
     {
         Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
-        Debug.Log(towerPlace);
         Vector3 pos = towerPlace.position;
         pos.y += .25f;
         switch(index){
@@ -111,7 +110,16 @@ public class TowerManager : MonoBehaviour
         Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
         Vector3 pos = towerPlace.position;
         pos.y -= .75f;
-        archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex, id);
+        string[] ar = id.Split("_");
+        switch (ar[1]) 
+        {
+            case "archer":
+                archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex, id);
+                break;
+            case "hero":
+                archerTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, id);
+                break;
+        }
         towerPlace.gameObject.SetActive(false);
         GameController.instance.PlayerMoney -= ArcherPrice;
         StoryUIController.instance.UpdateGoldIndex();

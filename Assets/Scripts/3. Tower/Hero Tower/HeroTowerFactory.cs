@@ -38,9 +38,7 @@ public class HeroTowerFactory : AbstractFactoryTower
         {
             towerLevelSprite.GetChild(i).gameObject.SetActive(false);
         }
-        towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).gameObject.SetActive(true);
-        if (towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).childCount > 0)
-            towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).GetChild(int.Parse(idls[3]) - 1).gameObject.SetActive(true);
+        towerLevelSprite.GetChild(0).gameObject.SetActive(true);
     }
     
 

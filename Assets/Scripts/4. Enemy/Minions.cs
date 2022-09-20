@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class Minions : AEnemy
 {
+    public Slider HealthAmountUI;
+    private float MaxHP;
     public class EnemyConverter : JsonConverter<List<EnemyJs>> { }
     public class EnemyJs
     {
@@ -33,6 +36,7 @@ public class Minions : AEnemy
                 DamageToCastle = a.damage;
                 Reward = a.killReward;
                 //Size = a.height;
+                MaxHP = HP;
             }
     }
     public override void Start()
@@ -44,10 +48,6 @@ public class Minions : AEnemy
     public override void Update()
     {
         base.Update();
+        HealthAmountUI.value = HP/MaxHP;
     }
-
-    //public override void SetEnemy(string id)
-    //{
-    //    throw new System.NotImplementedException();
-    //}
 }

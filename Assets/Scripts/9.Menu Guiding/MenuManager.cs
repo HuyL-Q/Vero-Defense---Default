@@ -10,27 +10,11 @@ public class MenuManager : MonoBehaviour
         switch (menuName)
         {
             case MenuName.Gameplay:
-                SceneManager.LoadScene("Gameplay");
+                SceneManager.LoadScene("GamePlay");
                 break;
             case MenuName.Main:
                 SceneManager.LoadScene("Main Menu");
                 break;
-            case MenuName.Equipment:
-                SceneManager.LoadScene("Equipment");
-                break;
-            case MenuName.Marketplace:
-                SceneManager.LoadScene("Marketplace");
-                break;
-            case MenuName.Event:
-                SceneManager.LoadScene("Event");
-                break;
-            case MenuName.Mail:
-                SceneManager.LoadScene("Mail");
-                break;
-            case MenuName.TransferMoney:
-                SceneManager.LoadScene("Transfer Money");
-                break;
-
         }
     }
 }

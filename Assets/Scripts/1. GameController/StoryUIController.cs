@@ -30,8 +30,6 @@ public class StoryUIController : MonoBehaviour
     GameObject upgradeAndSellPanel;
     [SerializeField]
     GameObject pausePanel;
-    [SerializeField]
-    GameObject archerBuyTowerButton;
     public static StoryUIController instance;
 
     private void Awake()
@@ -101,21 +99,21 @@ public class StoryUIController : MonoBehaviour
         CloseBuyTower();
         StartCoroutine(CheckTowerPrice());
         buyTowerPanel.SetActive(true);
-        //Vector3 offset = towerPlacement.GetComponent<PolygonCollider2D>().offset;
-        buyTowerPanel.transform.position = new(towerPlacement.position.x + 1.25f, towerPlacement.position.y + 1f, buyTowerPanel.transform.position.z);
-        buyTowerPanel.transform.localScale = new(0, 0, 0);
         buyTowerPanel.transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
         placementIndex = towerPlacementIndex;
     }
 
-    IEnumerator CheckTowerPrice()
+    IEnumerator CheckTowerPrice()// disable button
     {
         while (true)
         {
-            archerBuyTowerButton.GetComponent<Button>().interactable = true;
-            if (TowerManager.instance.ArcherPrice > GameController.instance.PlayerMoney)
+            foreach(GameObject archerBuyTowerButton in BuyTower.ButtonList)
             {
-                archerBuyTowerButton.GetComponent<Button>().interactable = false;
+                archerBuyTowerButton.GetComponent<Button>().interactable = true;
+                if (TowerManager.instance.ArcherPrice > GameController.instance.PlayerMoney)
+                {
+                    archerBuyTowerButton.GetComponent<Button>().interactable = false;
+                }
             }
             yield return null;
         }
@@ -247,11 +245,10 @@ public class StoryUIController : MonoBehaviour
             currentTower.GetComponent<ATower>().RangeIndicator.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
-    public void BuildTower(int index)
+    public void BuildTower(string index)
     {
         StopCoroutine(CheckTowerPrice());
         CloseBuyTower();
-    
         TowerManager.instance.SetTower(placementIndex, index);
                 
     }
@@ -292,5 +289,20 @@ public class StoryUIController : MonoBehaviour
             Time.timeScale = 1;
             MenuManager.MenuSwitch(MenuName.Main);
         });
+    }
+    public void GameOverReplay()
+    {
+        GameObject.Find("UI").transform.GetChild(2).transform.GetChild(0).DOScale(0, .5f).SetEase(Ease.InBack).SetUpdate(true).OnComplete(() =>
+        {
+            GameObject.Find("UI").transform.GetChild(2).gameObject.SetActive(false);
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        });
+        Time.timeScale = 1;
+    }
+    public void GameOverMainMenu()
+    {
+        GameObject.Find("UI").transform.GetChild(2).gameObject.SetActive(false);
+        MenuManager.MenuSwitch(MenuName.Main);
     }
 }

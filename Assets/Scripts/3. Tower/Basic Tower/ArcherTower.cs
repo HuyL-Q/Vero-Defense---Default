@@ -5,10 +5,9 @@ using UnityEngine.Networking;
 
 public class ArcherTower : ATower
 {
+    List<int> priceToUpgrade = new List<int>();
     public bool flag = false;
-
-    
-
+    //public List<int> PriceToUpgrade { get => priceToUpgrade; }
     public class TowerConverter : JsonConverter<List<TowerJs>> { }
     public override void Start()
     {

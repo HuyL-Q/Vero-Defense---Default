@@ -21,7 +21,6 @@ public class ArcherTowerFactory : AbstractFactoryTower
         towerGO.transform.position = position;
         towerGO.GetComponent<ArcherTower>().PlacementIndex = placementIndex;
         StartCoroutine(towerGO.GetComponent<ArcherTower>().SetTower(id));
-        //towerGO.GetComponent<SpriteRenderer>().sprite//level up
         string[] idls = id.Split('_');  
         Transform towerLevelSprite = towerGO.transform.GetChild(0);
         for(int i = 0; i < towerLevelSprite.childCount; i++)
