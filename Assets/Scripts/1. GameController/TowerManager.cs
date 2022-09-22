@@ -109,7 +109,6 @@ public class TowerManager : MonoBehaviour
     {
         Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
         Vector3 pos = towerPlace.position;
-        //pos.y -= .75f;
         string[] ar = id.Split("_");
         switch (ar[1]) 
         {

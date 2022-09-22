@@ -30,6 +30,10 @@ public class BuyTower : MonoBehaviour
             btn.name = t.type;
             btn.onClick.AddListener(()=> StoryUIController.instance.BuildTower(t.type));
             ButtonList.Add(button);
+            if (t.type.Contains("hero"))
+            {
+                GameController.instance.HeroList.Add(int.Parse(t.type.Split("_")[2]), false);
+            }
             flag = true;
         }
     }

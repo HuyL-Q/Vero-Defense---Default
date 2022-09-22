@@ -31,8 +31,8 @@ public class GameController : MonoBehaviour
     float playerPoint;
     State state;
     public bool flag = false;
-    public bool championIsPicked;
-
+    public Dictionary<int, bool> HeroList;
+    
     public int PlayerLives { get => playerLives; set => playerLives = value; }
     public float PlayerMoney { get => playerMoney; set => playerMoney = value; }
     public float PlayerPoint { get => playerPoint; set => playerPoint = value; }
@@ -49,12 +49,11 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //DontDestroyOnLoad(instance);
     }
     // Start is called before the first frame update
     void Start()
     {
-        championIsPicked = false;
+        HeroList = new Dictionary<int, bool>();
         State = State.Prestart;
         ReadStatFromFile();
         StartCoroutine(wait());

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class LyVanBuu : HeroTower
 {
+    public override void Skill()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Start()
     {
         if(!flag)

@@ -112,7 +112,7 @@ public class StoryUIController : MonoBehaviour
             {
                 archerBuyTowerButton.GetComponent<Button>().interactable = true;
                 if (TowerManager.instance.ArcherPrice > GameController.instance.PlayerMoney||
-                    (archerBuyTowerButton.name.Contains("hero")&&GameController.instance.championIsPicked))//disable hero button
+                    (archerBuyTowerButton.name.Contains("hero") && GameController.instance.HeroList[int.Parse(archerBuyTowerButton.name.Split("_")[2])]))//disable hero button
                 {
                     archerBuyTowerButton.GetComponent<Button>().interactable = false;
                 }
@@ -208,8 +208,6 @@ public class StoryUIController : MonoBehaviour
     {
         CloseUpgrade_SellPanel();
         TowerManager.instance.TowerPlacementParent.transform.GetChild(placementIndex).gameObject.GetComponent<CircleCollider2D>().enabled = true;
-        if (currentTower.name.Contains("hero"))
-            GameController.instance.championIsPicked = false;
         Destroy(currentTower);
         GameController.instance.PlayerMoney += priceToSell;
         UpdateGoldIndex();
