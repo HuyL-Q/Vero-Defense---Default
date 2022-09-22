@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-{"lives":50,"money":19644.0,"playerPoint":2136.0,"state":0,"stageIndex":15,"ls":[{"x":-10.32007,"y":3.69984269,"z":0.0,"towerPlacementIndex":38,"id":"tower_archer_4_1"},{"x":-6.511056,"y":3.69984269,"z":0.0,"towerPlacementIndex":37,"id":"tower_archer_4_2"},{"x":5.43071938,"y":-3.733709,"z":0.0,"towerPlacementIndex":23,"id":"tower_archer_4_2"},{"x":4.710095,"y":-6.35731554,"z":0.0,"towerPlacementIndex":22,"id":"tower_archer_1"}]}
-=======
-{"lives":47,"money":18558.0,"playerPoint":2112.0,"state":0,"stageIndex":10,"ls":[{"x":-10.32007,"y":3.69984269,"z":0.0,"towerPlacementIndex":38,"id":"tower_archer_4_2"},{"x":5.43071938,"y":-3.733709,"z":0.0,"towerPlacementIndex":23,"id":"tower_archer_4_2"},{"x":-17.0630569,"y":-8.800871,"z":0.0,"towerPlacementIndex":5,"id":"tower_archer_4_2"},{"x":11.7361832,"y":-6.048656,"z":0.0,"towerPlacementIndex":20,"id":"tower_archer_4_2"},{"x":15.8283,"y":-6.640253,"z":0.0,"towerPlacementIndex":19,"id":"tower_archer_4_2"}]}
->>>>>>> Stashed changes
+{"lives":50,"money":1000.0,"playerPoint":0.0,"state":0,"stageIndex":0,"ls":[]}

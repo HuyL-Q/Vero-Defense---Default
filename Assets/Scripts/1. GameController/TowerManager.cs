@@ -25,12 +25,18 @@ public class TowerManager : MonoBehaviour
     [SerializeField]
     GameObject btnBuyArcher;
     [SerializeField]
+    GameObject btnBuyHero1;
+    [SerializeField]
+    GameObject btnBuyHero2;
+    [SerializeField]
     Transform towerParent;
     int archerPrice;
     ArcherTowerFactory archerTowerFactory;
+    HeroTowerFactory heroTowerFactory;
     public static TowerManager instance;
     public int ArcherPrice { get => archerPrice; set => archerPrice = value; }
-    public GameObject TowerPlacementParent { get => towerPlacementParent; set => towerPlacementParent = value;}
+    public int HeroPrice { get => archerPrice; set => archerPrice = value; }
+    public GameObject TowerPlacementParent { get => towerPlacementParent; set => towerPlacementParent = value; }
 
     private void Awake()
     {
@@ -47,6 +53,7 @@ public class TowerManager : MonoBehaviour
     void Start()
     {
         archerTowerFactory = GetComponent<ArcherTowerFactory>();
+        heroTowerFactory = GetComponent<HeroTowerFactory>();
         StartCoroutine(FetchTowerPrice());
     }
 
@@ -62,29 +69,58 @@ public class TowerManager : MonoBehaviour
                 ArcherPrice = tower.Cost;
                 btnBuyArcher.transform.GetChild(0).GetComponent<Text>().text = ArcherPrice.ToString();
             }
+            if (tower.id.Contains("hero_1"))
+            {
+                HeroPrice = tower.Cost;
+                btnBuyHero1.transform.GetChild(0).GetComponent<Text>().text = HeroPrice.ToString();
+            }
+
+            if (tower.id.Contains("hero_2"))
+            {
+                HeroPrice = tower.Cost;
+                btnBuyHero2.transform.GetChild(0).GetComponent<Text>().text = HeroPrice.ToString();
+            }
         }
         yield return null;
     }
 
-    public void SetTower(int placementIndex)
-    {
-        Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
-        Vector3 pos = towerPlace.position;
-        pos.y -= .75f;
-        archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex);
-        towerPlace.gameObject.SetActive(false);
-        GameController.instance.PlayerMoney -= ArcherPrice;
-        StoryUIController.instance.UpdateGoldIndex();
-    }
+    //public void SetTower(int placementIndex, int index)
+    //{
+    //    Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
+    //    Vector3 pos = towerPlace.position;
+    //    pos.y += .25f;
+    //    switch(index){
+    //        case 0:
+    //            archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex);
+    //            break;
+    //        case 1:
+    //            heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, index);
+    //            break;
+    //        case 2:
+    //            heroTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, index+1);
+    //            break;
+    //    }
+        
+    //    towerPlace.gameObject.SetActive(false);
+    //    //GameController.instance.PlayerMoney -= ArcherPrice;
+    //    //StoryUIController.instance.UpdateGoldIndex();
+    //}
     public void SetTower(int placementIndex, string id)
     {
         Transform towerPlace = TowerPlacementParent.transform.GetChild(placementIndex);
         Vector3 pos = towerPlace.position;
-        pos.y -= .75f;
-        archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex, id);
-        towerPlace.gameObject.SetActive(false);
-        GameController.instance.PlayerMoney -= ArcherPrice;
-        StoryUIController.instance.UpdateGoldIndex();
+        //pos.y -= .75f;
+        string[] ar = id.Split("_");
+        switch (ar[1]) 
+        {
+            case "archer":
+                archerTowerFactory.GetComponent<ArcherTowerFactory>().CreateTower(towerParent, pos, placementIndex, id);
+                break;
+            case "hero":
+                archerTowerFactory.GetComponent<HeroTowerFactory>().CreateTower(towerParent, pos, placementIndex, id);
+                break;
+        }
+        towerPlace.gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
     public void UpgradeTower(GameObject tower, int prefix)
     {

@@ -25,8 +25,6 @@ public class MainMenu : MonoBehaviour
         GameController.instance.LoadData();
         gameObject.SetActive(false);
     }
-<<<<<<< Updated upstream
-=======
     void Start()
     {
         GameObjectConverter converter = new GameObjectConverter();
@@ -40,5 +38,4 @@ public class MainMenu : MonoBehaviour
 
         //}
     }
->>>>>>> Stashed changes
 }

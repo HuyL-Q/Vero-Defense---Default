@@ -37,7 +37,7 @@ public class NewSpawnController : MonoBehaviour
     void Start()
     {
         isWaveEnded = true;
-            waveIndex = 0;
+        waveIndex = 0;
         numOfEnemies = 3;
         CurrentNumOfEnemies = NumOfEnemies;
         gameObject.AddComponent<MinionFactory>();
@@ -46,18 +46,6 @@ public class NewSpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        StartCoroutine(wait());
-    }
-    IEnumerator wait()
-    {
-        numOfEnemies = waveIndex + 2;
-        yield return new WaitUntil(() => (GameController.instance.flag));
-        if (GameController.instance.State == State.End_Defeat)
-        {
-            StopCoroutine(SpawnWave());
-            yield break;
-=======
         if (!GameController.instance.flag) return;
         if (GameController.instance.State == State.End_Defeat)
         {
@@ -67,7 +55,6 @@ public class NewSpawnController : MonoBehaviour
             converter.setCurrentDir(@"/data.json");
             converter.DeleteData();
             //yield break;
->>>>>>> Stashed changes
         }
         if (isWaveEnded)
         {
@@ -76,15 +63,9 @@ public class NewSpawnController : MonoBehaviour
         }
         if (CurrentNumOfEnemies == 0)
         {
-<<<<<<< Updated upstream
-            isWaveEnded = true;
-            numOfEnemies = waveIndex + 2;
-=======
             StartCoroutine(WaitForNewSpawn());
             numOfEnemies = waveIndex + 3;
->>>>>>> Stashed changes
             CurrentNumOfEnemies = numOfEnemies;
-            yield return new WaitForSeconds(20);
         }
     }
 

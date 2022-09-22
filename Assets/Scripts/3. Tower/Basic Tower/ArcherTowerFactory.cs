@@ -11,8 +11,8 @@ public class ArcherTowerFactory : AbstractFactoryTower
         var towerGO = Instantiate(basicTowerPrefab, tower);
         towerGO.transform.position = position;
         towerGO.GetComponent<ArcherTower>().PlacementIndex = placementIndex;
-        //tower.GetComponent<ArcherTower>().SetTower(id);
-        //Debug.Log(PlayerStats.Money);//UI Design
+        GameController.instance.PlayerMoney -= towerGO.GetComponent<ArcherTower>().Price;
+        StoryUIController.instance.UpdateGoldIndex();
     }
 
     public override void CreateTower(Transform tower, Vector3 position, int placementIndex, string id)
@@ -21,7 +21,8 @@ public class ArcherTowerFactory : AbstractFactoryTower
         towerGO.transform.position = position;
         towerGO.GetComponent<ArcherTower>().PlacementIndex = placementIndex;
         StartCoroutine(towerGO.GetComponent<ArcherTower>().SetTower(id));
-        //towerGO.GetComponent<SpriteRenderer>().sprite//level up
+        GameController.instance.PlayerMoney -= towerGO.GetComponent<ArcherTower>().Price;
+        StoryUIController.instance.UpdateGoldIndex();
         string[] idls = id.Split('_');  
         Transform towerLevelSprite = towerGO.transform.GetChild(0);
         for(int i = 0; i < towerLevelSprite.childCount; i++)
@@ -32,4 +33,5 @@ public class ArcherTowerFactory : AbstractFactoryTower
         if (towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).childCount > 0)
             towerLevelSprite.GetChild(int.Parse(idls[2]) - 1).GetChild(int.Parse(idls[3]) - 1).gameObject.SetActive(true);
     }
+
 }

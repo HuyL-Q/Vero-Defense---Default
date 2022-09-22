@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         mixer = GameObject.Find("AudioManager").GetComponent<AudioSource>();
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
@@ -21,7 +22,10 @@ public class SoundManager : MonoBehaviour
         {
             Load();
         }
-        SettingMenu = GameController.FindInActiveObjectByName("Setting");
+        SettingMenu = GameController.FindInActiveObjectByName("Setting Canvas");
+        OpenSetting();
+        CloseSetting();
+        DontDestroyOnLoad(SettingMenu);
     }
     public void TurnOffSound()
     {

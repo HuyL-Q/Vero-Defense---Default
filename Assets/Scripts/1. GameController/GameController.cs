@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum State { Prestart, Start, End_Defeat, End_Victory, Pause };
 public class PlayerStat
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour
     float playerPoint;
     State state;
     public bool flag = false;
+    public bool championIsPicked;
 
     public int PlayerLives { get => playerLives; set => playerLives = value; }
     public float PlayerMoney { get => playerMoney; set => playerMoney = value; }
@@ -52,16 +54,14 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        championIsPicked = false;
         State = State.Prestart;
         ReadStatFromFile();
-<<<<<<< Updated upstream
-=======
         StartCoroutine(wait());
     }
     IEnumerator wait()
     {
         yield return new WaitForSeconds(0.6f);
->>>>>>> Stashed changes
         flag = true;
     }
     void ReadStatFromFile()
@@ -103,8 +103,6 @@ public class GameController : MonoBehaviour
     }
     public static GameObject FindInActiveObjectByName(string name)
     {
-<<<<<<< Updated upstream
-=======
         Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
         for (int i = 0; i < objs.Length; i++)
         {
@@ -120,7 +118,6 @@ public class GameController : MonoBehaviour
     }
     public void LoadData()
     {
->>>>>>> Stashed changes
         GameObjectConverter converter = new GameObjectConverter();
         converter.setCurrentDir(@"/data.json");
         SaveGame.Instance = converter.getObjectFromJSON();
@@ -134,11 +131,15 @@ public class GameController : MonoBehaviour
         GameController.instance.PlayerPoint = SaveGame.Instance.playerPoint;
         GameController.instance.State = SaveGame.Instance.state;
         NewSpawnController.Instance.WaveIndex = SaveGame.Instance.stageIndex;
-<<<<<<< Updated upstream
-=======
         NewSpawnController.Instance.NumOfEnemies = NewSpawnController.Instance.NumOfEnemies;
->>>>>>> Stashed changes
+        StoryUIController.instance.UpdateGoldIndex();
+        StoryUIController.instance.UpdateLivesIndex();
+        StoryUIController.instance.UpdateWaveIndex();
         flag = true;
         //reset stage using stageindex
+    }
+    public void OpenSetting()
+    {
+        FindInActiveObjectByName("Setting Canvas").SetActive(true);
     }
 }

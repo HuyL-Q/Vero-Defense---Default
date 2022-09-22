@@ -1,45 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class HeroTower : ATower
 {
-    public override void Attack()
-    {
-        base.Attack();
-        //throw new System.NotImplementedException();
-        //add when got bullet
-    }
+    
+    public bool flag = false;
+
+    public class TowerConverter : JsonConverter<List<TowerJs>> { }
+    
+    Animator _animator;
+
+    public Animator Animator { get => _animator; set => _animator = value; }
+
     public override int GetSize()
     {
         return Size;
     }
-    public override void UpdateEnemy()
-    {
-        CurrentEnemy = GameObject.FindGameObjectWithTag("Boss");
-        //base.UpdateEnemy();
-    }
     public override void Start()
     {
-        SetStatus();
+        if (GameController.instance.championIsPicked)
+            SellButton(PlacementIndex);
         base.Start();
+        GameController.instance.championIsPicked = true;
     }
-    public void SetStatus()
-    {
-        AttackSpeed = 1;
-        Damage = 10;
-    }
-    public override List<string> UpgradeTowerID(string id)
-    {
-        throw new System.NotImplementedException();
-    }
-    public override int GetNextCost(string id)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override IEnumerator SetTower(string id)
     {
-        throw new System.NotImplementedException();
+        PriceToUpgrade.Clear();
+        //import data from json here
+        string[] idSplit = id.Split("_");
+        string nextID = idSplit[0] + "_" + idSplit[1] + "_" + (int.Parse(idSplit[2]) + 1);
+        TowerConverter tc = new TowerConverter();
+        tc.setCurrentDir(@"\TowerStat.json");
+        List<TowerJs> towerList = tc.getObjectFromJSON();
+        foreach (TowerJs tower in towerList)
+        {
+            if (tower.id == id)
+            {
+                ID = tower.id;
+                Damage = tower.attack;
+                Range = tower.range;
+                AttackSpeed = tower.attackSpeed;
+                Price = tower.Cost;
+                Size = tower.height;
+                //Data = true;
+            }
+        }
+        flag = true;
+        transform.GetChild(2).localScale = new Vector2(Range, Range);
+        gameObject.name = ID;
+        yield return null;
     }
+    public void SellButton(int placementIndex)
+    {
+        TowerManager.instance.TowerPlacementParent.transform.GetChild(placementIndex).gameObject.SetActive(true);
+        Destroy(gameObject);
+        GameController.instance.PlayerMoney += this.Price;
+        StoryUIController.instance.UpdateGoldIndex();
+    }
+    public override void Update(){
+        ShootTimer -= Time.deltaTime;
+        if (ShootTimer <= 0f)
+        {
+            
+            ShootTimer = AttackSpeed;
+            UpdateEnemy();
+            if (CurrentEnemy != null)
+            {
+                Animator.SetBool("IsAttack", true);
+                Vector2 direction = CurrentEnemy.transform.position - transform.position;
+                Animator.SetFloat("Horizontal", direction.x);
+                Animator.SetFloat("Vertical", direction.y);
+                ShootPosition = transform.GetChild(3).position;
+                Attack();
+            }
+            else
+            {
+                Animator.SetBool("IsAttack", false);
+                transform.rotation = Quaternion.identity;
+                //transform.GetChild(3).rotation = Quaternion.identity;
+            }
+        }
+    }
+    
 }
