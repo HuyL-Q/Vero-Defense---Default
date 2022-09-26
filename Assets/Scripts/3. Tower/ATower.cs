@@ -14,6 +14,7 @@ public abstract class ATower : MonoBehaviour, ITower
     [SerializeField]
     GameObject rangeIndicator;
     private string id;
+    [SerializeField]
     private int damage;
     private float range;
     [SerializeField]
@@ -151,7 +152,7 @@ public abstract class ATower : MonoBehaviour, ITower
         return idU;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
@@ -159,7 +160,7 @@ public abstract class ATower : MonoBehaviour, ITower
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
@@ -171,7 +172,7 @@ public abstract class ATower : MonoBehaviour, ITower
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {

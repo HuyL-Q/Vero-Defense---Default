@@ -104,8 +104,10 @@ MonoBehaviour:
   bullet: {fileID: 7647718938911541100, guid: 7edb59c2661ab3a4a913b6b250b7d2cf, type: 3}
   monsters: []
   rangeIndicator: {fileID: 3202431079179712544}
+  damage: 0
   attackSpeed: 0
   flag: 0
+  towers: []
 --- !u!1 &3202431079179712544
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +267,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
