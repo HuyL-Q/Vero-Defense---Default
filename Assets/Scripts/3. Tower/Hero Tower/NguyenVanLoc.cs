@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NguyenVanLoc : HeroTower
+public class NguyenVanLoc : AMeleeHero
 {
     public override void Skill()
     {
         throw new System.NotImplementedException();
     }
-
     public override void Start()
     {
         if(!flag)
