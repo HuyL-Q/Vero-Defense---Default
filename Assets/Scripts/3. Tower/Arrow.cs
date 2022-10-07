@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -6,10 +7,12 @@ public class Arrow : MonoBehaviour
 {
     private Action<GameObject> onRelease;
     private float damage;
+    private List<Type> effectList;
     private GameObject targetAiming;
     public float Damage { get => damage; set => damage = value; }
     public GameObject TargetAiming { get => targetAiming; set => targetAiming = value; }
     public Action<GameObject> OnRelease { get => onRelease; set => onRelease = value; }
+    public List<Type> EffectList { get => effectList; set => effectList = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,6 @@ public class Arrow : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.position += 10f * Time.deltaTime * (TargetAiming.transform.position - transform.position).normalized;
-        //Vector3.MoveTowards(transform.position, TargetAiming.transform.position, Mathf.Infinity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,8 +44,10 @@ public class Arrow : MonoBehaviour
         if (collision.CompareTag("Minions"))
         {
             collision.GetComponent<AEnemy>().ReceiveDamage(Damage);
+            SoundManagerDetail.PlaySound("Arrow_Hit");
+            List<Type> types = new List<Type> { typeof(Burn) };
+            AEffect.Active(collision.gameObject, types, 2);
             OnRelease(gameObject);
         }
-
     }
 }

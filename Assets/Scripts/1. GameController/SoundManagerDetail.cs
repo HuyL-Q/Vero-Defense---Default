@@ -19,7 +19,7 @@ public class SoundManagerDetail : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //audioSrc = GetComponent<AudioSource>();
+        audioSrc = GetComponent<AudioSource>();
     }
     public static void PlaySound(string clip)
     {

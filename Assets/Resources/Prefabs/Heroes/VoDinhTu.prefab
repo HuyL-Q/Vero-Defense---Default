@@ -160,9 +160,9 @@ GameObject:
   - component: {fileID: 2397648511930174923}
   - component: {fileID: 1331473930446016158}
   - component: {fileID: 3607919924462654117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: VoDinhTu
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

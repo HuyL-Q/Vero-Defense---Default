@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour
         State = State.Prestart;
         ReadStatFromFile();
         StartCoroutine(wait());
+        SoundManagerDetail.PlaySound("GamePlaySound");
     }
     IEnumerator wait()
     {

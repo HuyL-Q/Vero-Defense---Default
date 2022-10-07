@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8813429765200503907}
   - component: {fileID: 5292828315552016182}
   - component: {fileID: 2843379924979303337}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LyVanBuu
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

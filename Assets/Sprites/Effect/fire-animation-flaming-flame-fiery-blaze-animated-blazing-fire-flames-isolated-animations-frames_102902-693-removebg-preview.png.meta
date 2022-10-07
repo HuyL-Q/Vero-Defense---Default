@@ -1,0 +1,530 @@
+fileFormatVersion: 2
+guid: b34bd942bde3bb948b5ba9d7497bb4de
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 338
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0bbb4b62bca6384dba2ffe461ea4a36
+      internalID: 704872569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 338
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0d7fff4cc7083408daa804cc52b843
+      internalID: -2021982738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 338
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 331f9fb3cf164c649b07d0c6e23a2058
+      internalID: -432295952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 338
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc24ca38a2f6ec447b133649f9412382
+      internalID: -914274390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 338
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963b67c5141a6764d8e64cbcb1a69334
+      internalID: 940281582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 338
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ae95f8a16c80d419d2367a7c512c14
+      internalID: 1547677061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d88650339be95bb41b70a91c53eee978
+      internalID: -2034060456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 176
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0c8fbebfd16b840afa6dc34d89d512
+      internalID: 1833668207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 176
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e39bfe456388b742b03d457478175fd
+      internalID: 41124270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 176
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3da5a07c05dae04aa4d086503865a8c
+      internalID: -501326356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 176
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa54740255388d4ca434fff7ab78005
+      internalID: -1437232826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 176
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba655d6cca69e534898efacb3134bb5d
+      internalID: 129059616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 14
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380af4141f27ccc4b9a79a85b4406051
+      internalID: -1757591222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 14
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a6c4b10563489144864f7566d8cf917
+      internalID: 1723788400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 14
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342103d86b7aeb0498ee8730beac3d97
+      internalID: -1614775569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 14
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf7156756ffb3e94788a2ea3dcdca6b4
+      internalID: 393936316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 14
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6be79a5b5994d42a32d9a1a7516bf7
+      internalID: 786927835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 14
+        width: 82
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e181d5743bfc749ad31987d325573b
+      internalID: -1888344295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_12: -1757591222
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_11: 129059616
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_5: 1547677061
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_13: 1723788400
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_1: -2021982738
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_4: 940281582
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_7: 1833668207
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_14: -1614775569
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_16: 786927835
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_9: -501326356
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_2: -432295952
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_0: 704872569
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_3: -914274390
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_17: -1888344295
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_6: -2034060456
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_8: 41124270
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_10: -1437232826
+      fire-animation-flaming-flame-fiery-blaze-animated-blazing-fire-flames-isolated-animations-frames_102902-693-removebg-preview_15: 393936316
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

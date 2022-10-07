@@ -25,14 +25,15 @@ public class TowerController : MonoBehaviour
 
     }
 
-
+    RaycastHit2D hit;
     void Update()
     {
+        //Debug.Log(hit.collider);
         if (EventSystem.current.IsPointerOverGameObject()) return;
         if (Input.GetMouseButtonUp(0) && GameController.instance.State != State.End_Defeat)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, towerPlacementLayer);
+            hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, towerPlacementLayer);
             if (hit.collider != null)
             {
                 if (hit.collider.CompareTag("TowerPlace"))

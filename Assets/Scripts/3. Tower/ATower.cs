@@ -117,7 +117,14 @@ public abstract class ATower : MonoBehaviour, ITower
     public virtual void Attack()
     {
         //Vector3.
-        GameObject arrowGO = objectPool.Get();
+        GameObject arrowGO;
+        try
+        {
+            arrowGO = objectPool.Get();
+        }catch(Exception ex)
+        {
+            return;
+        }
         arrowGO.transform.parent = GameObject.Find("Arrow").transform;
         arrowGO.transform.localScale = new(5, 5, 5);
         arrowGO.transform.position = ShootPosition;

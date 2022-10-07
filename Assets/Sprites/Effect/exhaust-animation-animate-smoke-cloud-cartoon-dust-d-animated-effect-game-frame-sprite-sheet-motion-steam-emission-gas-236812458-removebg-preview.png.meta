@@ -1,0 +1,508 @@
+fileFormatVersion: 2
+guid: ef36532708bc15b48b94d0b990ace695
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 210
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceac099eb95e8c747bfbb822c81e390e
+      internalID: -1217021680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 211
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4225b3c980cb5144fa501270eb224a00
+      internalID: -618923879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 210
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a999d6322b36d4d96029c3123a6d3a
+      internalID: 953938637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 213
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e218b049742bf4fb40a76ae8e28924
+      internalID: -1661693338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 213
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8cbe75c2b0c514696ab674c7b8f4f8
+      internalID: -1639877466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 117
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddaedf6c02aaaed49b0de5c91eb8f66f
+      internalID: 1910860333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 213
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e40a2c72df842043919c338e04dd8e4
+      internalID: 1481629661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 118
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aadb478d5f8d48489037eb23be676ca
+      internalID: 482116208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 114
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9872e6e57034b434eab82a2ce2b7ac17
+      internalID: 364924218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 111
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025dc45a7e40302438d0aa8b1e0fb1e2
+      internalID: -1162864551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 110
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a56c32e81475e4e8505b8af752ac82
+      internalID: -1127765600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 9
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25036aabb81e39645a9af2200035d4da
+      internalID: 178653544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 4
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70db770b7bf42874aaf92f007008a1ae
+      internalID: -721528871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 9
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd512026d0314d0419451d3c09811129
+      internalID: -35229009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 7
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6cd0591ba6fcc2498f6d72b48d5c96a
+      internalID: -689994989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 5
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eeeb335a9751614bbf42d81f0b0fa10
+      internalID: -470886512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 5
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5435b8db6bfef44ebfebc67c7076ea1
+      internalID: 44300407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_5: 1910860333
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_14: -689994989
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_9: -1162864551
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_11: 178653544
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_12: -721528871
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_7: 482116208
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_8: 364924218
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_4: -905412181
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_3: -696211935
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_16: 44300407
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_0: 303747192
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_13: -35229009
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_10: -1127765600
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_6: 1481629661
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_15: -470886512
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_1: 1859850059
+      exhaust-animation-animate-smoke-cloud-cartoon-dust-d-animated-effect-game-frame-sprite-sheet-motion-steam-emission-gas-236812458-removebg-preview_2: -1562958505
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

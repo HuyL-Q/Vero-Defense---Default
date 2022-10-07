@@ -97,6 +97,7 @@ public class StoryUIController : MonoBehaviour
         CloseUpgrade_SellPanel();
         CloseBuyTower();
         StartCoroutine(CheckTowerPrice());
+        SoundManagerDetail.PlaySound("OpenTowerMenu");
         buyTowerPanel.SetActive(true);
         buyTowerPanel.transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
         placementIndex = towerPlacementIndex;
@@ -206,14 +207,18 @@ public class StoryUIController : MonoBehaviour
     }
     public void SellButton()
     {
+        SoundManagerDetail.PlaySound("SellTower");
         CloseUpgrade_SellPanel();
         TowerManager.instance.TowerPlacementParent.transform.GetChild(placementIndex).gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        if(currentTower.name.Contains("hero"))
+            GameController.instance.HeroList[int.Parse(currentTower.name.Split('_')[2])] = false;
         Destroy(currentTower);
         GameController.instance.PlayerMoney += priceToSell;
         UpdateGoldIndex();
     }
     public void UpgradeButton()
     {
+        SoundManagerDetail.PlaySound("TowerUpgrade");
         CloseUpgrade_SellPanel();
         GameController.instance.PlayerMoney -= priceToUpgrades[0];
         UpdateGoldIndex();
@@ -221,6 +226,7 @@ public class StoryUIController : MonoBehaviour
     }
     public void UpgradeButton(int prefix)
     {
+        SoundManagerDetail.PlaySound("TowerUpgrade");
         CloseUpgrade_SellPanel();
         GameController.instance.PlayerMoney -= priceToUpgrades[prefix - 1];
         UpdateGoldIndex();

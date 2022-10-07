@@ -344,9 +344,9 @@ GameObject:
   - component: {fileID: 1818546434568248753}
   - component: {fileID: 8018210342254789217}
   - component: {fileID: 2867999338319925958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeVanHung
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
