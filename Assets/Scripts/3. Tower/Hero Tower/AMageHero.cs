@@ -4,7 +4,15 @@ using UnityEngine;
 
 public abstract class AMageHero : HeroTower
 {
-    public abstract void Buff();
-    public abstract void ClearBuff();
-    public abstract void Debuff();
+    // Start is called before the first frame update
+    public override void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        
+    }
 }

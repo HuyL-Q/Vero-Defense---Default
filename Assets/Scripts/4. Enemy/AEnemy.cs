@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public abstract class AEnemy : MonoBehaviour, IEnemy
 {
@@ -8,20 +11,22 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
     private const string Vertical = "Vertical";
     private const string Magnitude = "Magnitude";
     private const string Dead = "Dead";
+    public EnemyScriptableObject data;
     NavMeshAgent _agent;
     Animator _animator;
     Animation _animation;
     GameObject _destination;
-    //private int wavepointIndex;
-    //string id;
     [SerializeField]
     float _hp;
+    public Slider HealthAmountUI;
+    float maxHP;
+    List<string> effect;
     //float runSpeed;
     int _damageToCastle;
     int _reward;
-    //int size;
-    //private bool dead;
-    //public string Id { get => id; set => id = value; }
+    float speed;
+    string id;
+
     public float HP { get => _hp; set => _hp = value; }
     public NavMeshAgent Agent { get => _agent; set => _agent = value; }
     public Animator Animator { get => _animator; set => _animator = value; }
@@ -30,6 +35,15 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
     public int DamageToCastle { get => _damageToCastle; set => _damageToCastle = value; }
     public int Reward { get => _reward; set => _reward = value; }
     public Animation Animation { get => _animation; set => _animation = value; }
+    public float MaxHP { get => maxHP; set => maxHP = value; }
+    public List<string> Effect { get => effect; set => effect = value; }
+    public string Id { get => id; set => id = value; }
+    public float Speed { get => speed; set => speed = value; }
+
+    public virtual void Awake()
+    {
+        Id = this.GetType().Name;
+    }
 
     public virtual void Start()
     {
@@ -52,14 +66,35 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
             Agent.isStopped = true;
             AttackToCastle();
         }
+        HealthAmountUI.value = HP / MaxHP;
     }
 
 
-    public abstract IEnumerator SetEnemy(string id);
+
+    public void SetEnemy(EnemyScriptableObject? dat = null)
+    {
+        if(dat != null)
+        {
+            data = dat;
+        }
+        Id = data.id;
+        HP = data.hp;
+        DamageToCastle = data.damage;
+        Reward = data.killReward;
+        MaxHP = HP;
+        Effect = data.Effect;
+        Speed = data.speed;
+        List<Type> temp = new List<Type>();
+        foreach(string ef in Effect)
+        {
+            temp.Add(Type.GetType(ef));
+        }
+        AEffect.Active(gameObject,temp);
+    }
 
     public void ReceiveDamage(float dmg)
     {
-        if(gameObject.TryGetComponent<Vulnerable>(out Vulnerable eff))
+        if (gameObject.TryGetComponent<Vulnerable>(out Vulnerable eff))
         {
             if (eff.enabled)
             {
@@ -70,7 +105,7 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         HP -= dmg;
         if (HP <= 0)
         {
-            foreach(AEffect effect in gameObject.GetComponents<AEffect>())
+            foreach (AEffect effect in gameObject.GetComponents<AEffect>())
             {
                 effect.enabled = false;
             }
@@ -115,9 +150,10 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
 
     private void OnEnable()
     {
-        StartCoroutine(SetEnemy("enemy_01_1"));
+        SetEnemy();
         Agent = GetComponent<NavMeshAgent>();
         _destination = GameObject.Find("Destination");
         Agent.destination = _destination.transform.position;
+        Agent.speed = Speed;
     }
 }

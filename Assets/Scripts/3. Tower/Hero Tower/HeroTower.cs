@@ -1,34 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public abstract class HeroTower : ATower
 {
+    
     public bool flag = false;
 
     public class TowerConverter : JsonConverter<List<TowerJs>> { }
-
+    
     Animator _animator;
 
     public Animator Animator { get => _animator; set => _animator = value; }
-
     public override int GetSize()
     {
         return Size;
     }
     public override void Start()
     {
-        if (GameController.instance.HeroList.GetValueOrDefault(int.Parse(ID.Split("_")[2])))
+        if (GameController.instance.HeroList.GetValueOrDefault(int.Parse(this.ID.Split("_")[2])))
             SellButton(PlacementIndex);
         base.Start();
-        GameController.instance.HeroList[int.Parse(ID.Split("_")[2])] = true;
+        GameController.instance.HeroList[int.Parse(this.ID.Split("_")[2])] = true;
     }
     public override IEnumerator SetTower(string id)
     {
-        //PriceToUpgrade.Clear();
+        PriceToUpgrade.Clear();
         //import data from json here
-        //string[] idSplit = id.Split("_");
-        //string nextID = idSplit[0] + "_" + idSplit[1] + "_" + (int.Parse(idSplit[2]) + 1);
+        string[] idSplit = id.Split("_");
+        string nextID = idSplit[0] + "_" + idSplit[1] + "_" + (int.Parse(idSplit[2]) + 1);
         TowerConverter tc = new TowerConverter();
         tc.setCurrentDir(@"\TowerStat.json");
         List<TowerJs> towerList = tc.getObjectFromJSON();
@@ -50,19 +51,19 @@ public abstract class HeroTower : ATower
         gameObject.name = ID;
         yield return null;
     }
+    public abstract void Skill();
     public void SellButton(int placementIndex)
     {
         TowerManager.instance.TowerPlacementParent.transform.GetChild(placementIndex).gameObject.SetActive(true);
         Destroy(gameObject);
-        GameController.instance.PlayerMoney += Price;
+        GameController.instance.PlayerMoney += this.Price;
         StoryUIController.instance.UpdateGoldIndex();
     }
-    public override void Update()
-    {
+    public override void Update(){
         ShootTimer -= Time.deltaTime;
         if (ShootTimer <= 0f)
         {
-
+            
             ShootTimer = AttackSpeed;
             UpdateEnemy();
             if (CurrentEnemy != null)
@@ -82,4 +83,5 @@ public abstract class HeroTower : ATower
             }
         }
     }
+    
 }

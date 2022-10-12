@@ -38,8 +38,4 @@ public class Boss : AEnemy
         base.Start();
     }
 
-    public override IEnumerator SetEnemy(string id)
-    {
-        throw new System.NotImplementedException();
-    }
 }

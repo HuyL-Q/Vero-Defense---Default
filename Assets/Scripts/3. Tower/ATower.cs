@@ -14,7 +14,6 @@ public abstract class ATower : MonoBehaviour, ITower
     [SerializeField]
     GameObject rangeIndicator;
     private string id;
-    [SerializeField]
     private int damage;
     private float range;
     [SerializeField]
@@ -126,7 +125,7 @@ public abstract class ATower : MonoBehaviour, ITower
         {
             return;
         }
-        arrowGO.transform.parent = GameObject.Find("Arrow").transform;
+//arrowGO.transform.parent = GameObject.Find("Arrow").transform;
         arrowGO.transform.localScale = new(5, 5, 5);
         arrowGO.transform.position = ShootPosition;
         //arrowGO.transform.localScale = transform.localScale;
@@ -159,7 +158,7 @@ public abstract class ATower : MonoBehaviour, ITower
         return idU;
     }
 
-    public virtual void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
@@ -167,19 +166,19 @@ public abstract class ATower : MonoBehaviour, ITower
         }
     }
 
-    public virtual void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
             GameObject monster = collision.gameObject;
-            if (monster.GetComponent<Minions>().HP <= 0)
+            if (monster.GetComponent<AEnemy>().HP <= 0)
             {
                 monsters.Remove(monster);
             }
         }
     }
 
-    public virtual void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
@@ -203,7 +202,7 @@ public abstract class ATower : MonoBehaviour, ITower
     {
         monsters = new();
         shootTimer = AttackSpeed;
-        objectPool = new ObjectPool<GameObject>(() => { return Instantiate(bullet); }
+        objectPool = new ObjectPool<GameObject>(() => { return Instantiate(bullet, GameObject.Find("Arrow").transform); }
                                                 , obj => { obj.SetActive(true); }
                                                 , obj => { obj.SetActive(false); }
                                                 , obj => { Destroy(obj); }

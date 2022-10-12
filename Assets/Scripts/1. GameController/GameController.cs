@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public enum State { Prestart, Start, End_Defeat, End_Victory, Pause };
 public class PlayerStat
@@ -57,7 +58,15 @@ public class GameController : MonoBehaviour
         State = State.Prestart;
         ReadStatFromFile();
         StartCoroutine(wait());
-        SoundManagerDetail.PlaySound("GamePlaySound");
+        try 
+        {
+            SoundManagerDetail.PlaySound("GamePlaySound");
+        }
+        catch(Exception E)
+        {
+
+        }
+        
     }
     IEnumerator wait()
     {
@@ -67,7 +76,7 @@ public class GameController : MonoBehaviour
     void ReadStatFromFile()
     {
         PlayerStatsConverter statsConverter = new();
-        statsConverter.setCurrentDir(@"PlayerStats.json");
+        statsConverter.setCurrentDir(@"\PlayerStats.json");
         PlayerStat stats = statsConverter.getObjectFromJSON();
         PlayerLives = stats.Lives;
         PlayerMoney = stats.Money;
@@ -85,10 +94,10 @@ public class GameController : MonoBehaviour
     }
     public void SaveData()
     {
-        SaveGame.Instance.lives = PlayerLives;
-        SaveGame.Instance.money = PlayerMoney;
-        SaveGame.Instance.playerPoint = PlayerPoint;
-        SaveGame.Instance.state = State;
+        SaveGame.Instance.lives = GameController.instance.PlayerLives;
+        SaveGame.Instance.money = GameController.instance.PlayerMoney;
+        SaveGame.Instance.playerPoint = GameController.instance.PlayerPoint;
+        SaveGame.Instance.state = GameController.instance.State;
         SaveGame.Instance.stageIndex = NewSpawnController.Instance.WaveIndex - 1;
         GameObjectConverter converter = new GameObjectConverter();
         converter.setCurrentDir(@"/data.json");
@@ -126,10 +135,10 @@ public class GameController : MonoBehaviour
         {
             TowerManager.instance.SetTower(data.towerPlacementIndex, data.id);
         }
-        PlayerLives = SaveGame.Instance.lives;
-        PlayerMoney = SaveGame.Instance.money;
-        PlayerPoint = SaveGame.Instance.playerPoint;
-        State = SaveGame.Instance.state;
+        GameController.instance.PlayerLives = SaveGame.Instance.lives;
+        GameController.instance.PlayerMoney = SaveGame.Instance.money;
+        GameController.instance.PlayerPoint = SaveGame.Instance.playerPoint;
+        GameController.instance.State = SaveGame.Instance.state;
         NewSpawnController.Instance.WaveIndex = SaveGame.Instance.stageIndex;
         NewSpawnController.Instance.NumOfEnemies = NewSpawnController.Instance.NumOfEnemies;
         StoryUIController.instance.UpdateGoldIndex();

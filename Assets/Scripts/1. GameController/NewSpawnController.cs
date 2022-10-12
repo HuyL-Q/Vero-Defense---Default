@@ -1,7 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.Pool;
 
+public class EnemyJs
+{
+    public string id;
+    public int hp;
+    public float speed;
+    public int damage;
+    public int killReward;
+    public List<string> Effect;
+}
 public class NewSpawnController : MonoBehaviour
 {
     [SerializeField]
@@ -12,14 +23,17 @@ public class NewSpawnController : MonoBehaviour
     private int numOfEnemies;
     [SerializeField]
     private int currentNumOfEnemies;
+    public GameObject[] EnemyPrefabs;
+    public class EnemyConverter : JsonConverter<List<EnemyJs>> { }
+
+
     //private float timeBetweenWave;
     public int WaveIndex { get => waveIndex; set => waveIndex = value; }
     public bool IsWaveEnded { get => isWaveEnded; }
 
     public static NewSpawnController Instance { get; private set; }
     public int CurrentNumOfEnemies { get => currentNumOfEnemies; set => currentNumOfEnemies = value; }
-    public int NumOfEnemies { get => numOfEnemies; set => numOfEnemies = value;}
-    //public float TimeBetweenWave { get => timeBetweenWave; set => timeBetweenWave = value; }
+    public int NumOfEnemies { get => numOfEnemies; set => numOfEnemies = value; }
 
     private void Awake()
     {
@@ -81,7 +95,7 @@ public class NewSpawnController : MonoBehaviour
         StoryUIController.instance.UpdateWaveIndex();
         for (int i = 0; i < NumOfEnemies; i++)
         {
-            gameObject.GetComponent<MinionFactory>().CreateEnemy(spawnStartPos[Random.Range(0, spawnStartPos.Count)]);
+            gameObject.GetComponent<MinionFactory>().CreateEnemy(spawnStartPos[Random.Range(0, spawnStartPos.Count)], EnemyPrefabs[2]);// change EnemyPrefabs[0] to set Enemy data
             yield return new WaitForSeconds(.5f);
         }
         //TimeBetweenWave = 5f;

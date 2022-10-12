@@ -4,5 +4,15 @@ using UnityEngine;
 
 public abstract class AMeleeHero : HeroTower
 {
-    public abstract void Skill();
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

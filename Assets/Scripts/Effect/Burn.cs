@@ -16,7 +16,7 @@ public class Burn : ADebuff
         timer = 0.1f;
         gameObject.AddComponent<ParticleSystem>();
     }
-    void Update()
+    public override void Update()
     {
         base.Update();
         if (this.enabled)
