@@ -95,7 +95,7 @@ public class NewSpawnController : MonoBehaviour
         StoryUIController.instance.UpdateWaveIndex();
         for (int i = 0; i < NumOfEnemies; i++)
         {
-            gameObject.GetComponent<MinionFactory>().CreateEnemy(spawnStartPos[Random.Range(0, spawnStartPos.Count)], EnemyPrefabs[2]);// change EnemyPrefabs[0] to set Enemy data
+            gameObject.GetComponent<MinionFactory>().CreateEnemy(spawnStartPos[Random.Range(0, spawnStartPos.Count)], EnemyPrefabs[0]);// change EnemyPrefabs[0] to set Enemy data
             yield return new WaitForSeconds(.5f);
         }
         //TimeBetweenWave = 5f;
