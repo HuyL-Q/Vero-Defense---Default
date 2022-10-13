@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93427172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.94, y: -20.83, z: 0}
+  m_LocalPosition: {x: 4.04, y: -20.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -999,6 +999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89e715a543346b4c95b7074f0af7622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLives: 50
+  playerMoney: 1000
   flag: 0
 --- !u!114 &280521551
 MonoBehaviour:
@@ -5564,6 +5566,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Content: {fileID: 659636266}
   ButtonPrefab: {fileID: 6508711641842153573, guid: 87d72f99eabc313458ed212a03eda44b, type: 3}
+  btnName:
+  - tower_archer_1
+  - tower_catapult_1
+  - tower_hero_1
+  - tower_hero_2
+  - tower_hero_3
+  - tower_hero_4
+  - tower_hero_5
+  - tower_hero_6
+  - tower_hero_7
+  - tower_hero_8
 --- !u!114 &1358917416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5907,7 +5920,7 @@ MonoBehaviour:
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
+  m_OverrideTileSize: 1
   m_TileSize: 256
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
@@ -7402,6 +7415,8 @@ MonoBehaviour:
   - {fileID: 8694976450547683657, guid: 1cc1cfb7fefae7d499c92590f83e5d13, type: 3}
   - {fileID: 6977597576989639643, guid: 638a1005108bfb04990754c8e410de22, type: 3}
   - {fileID: 3370652821889466206, guid: 0be99c444a41b9b4395bdd73a6ed1e85, type: 3}
+  - {fileID: 8694976450547683657, guid: f2889cbd6a558604489ac9fae1abbbcc, type: 3}
+  TowerInScreen: {fileID: 1854242043}
 --- !u!1001 &1771516334
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,10 +10,15 @@ public class MinionFactory : AbstractFactoryEnemy
     public void CreateEnemy(GameObject spawnPos, GameObject data)
     {
         GameObject minionsGameObject = ObjectPoolController.Instance.Pools[data.name].Get();
-        //minionsGameObject.GetComponent<AEnemy>().Agent.updatePosition = false;//?
-        Debug.Log(spawnPos.transform.position);
-        minionsGameObject.transform.position = spawnPos.transform.position;
-        minionsGameObject.GetComponent<AEnemy>().Agent.nextPosition = spawnPos.transform.position;//?
+        minionsGameObject.GetComponent<AEnemy>().Agent.Warp(spawnPos.transform.position);
+        if (int.Parse(spawnPos.name.Split("Spawn")[1]) <= 2)
+        {
+            minionsGameObject.GetComponent<AEnemy>().Agent.destination = GameObject.Find("Destination").transform.position;
+        }
+        else
+        {
+            minionsGameObject.GetComponent<AEnemy>().Agent.destination = GameObject.Find("Destination2").transform.position;
+        }
         minionsGameObject.SetActive(true);
     }
-} 
+}

@@ -15,14 +15,17 @@ public class DragCamera : MonoBehaviour
     private void Start()
     {
         boxCollider = this.GetComponent<BoxCollider2D>();
+        ResetCamera = Camera.main.transform.position;
     }
 
     private void LateUpdate()
     {
-        if (Input.touchCount == 1)
+        //if (Input.touchCount == 1)
         {
+            
             if (Input.GetMouseButton(0))
             {
+                
                 Diference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
                 if (Drag == false)
                 {
@@ -35,8 +38,12 @@ public class DragCamera : MonoBehaviour
                 Drag = false;
             }
             if (Drag == true)
+
             {
+                
                 Camera.main.transform.position = Origin - Diference;
+                //StoryUIController.instance.CloseUpgrade_SellPanel();
+                //StoryUIController.instance.CloseAttackRange();
             }
             //RESET CAMERA TO STARTING POSITION WITH RIGHT CLICK
             if (Input.GetMouseButton(1))

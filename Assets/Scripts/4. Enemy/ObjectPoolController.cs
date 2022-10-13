@@ -27,7 +27,7 @@ public class ObjectPoolController : MonoBehaviour
                 obj => obj.SetActive(true),
                 obj => obj.SetActive(false),
                 obj => Destroy(obj),
-                false, 10, 20
+                false
                 ));
         }
     }

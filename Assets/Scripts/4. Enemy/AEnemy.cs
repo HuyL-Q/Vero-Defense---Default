@@ -118,7 +118,6 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
 
     public void AttackToCastle()
     {
-        //throw new System.NotImplementedException();
         GameController.instance.PlayerLives -= DamageToCastle;
         StoryUIController.instance.UpdateLivesIndex();
         NewSpawnController.Instance.CurrentNumOfEnemies--;
@@ -126,7 +125,7 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         {
             effect.enabled = false;
         }
-        gameObject.SetActive(false);
+        ObjectPoolController.Instance.Pools[this.id].Release(gameObject);
     }
 
     public void GiveReward()
@@ -134,7 +133,6 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         GameController.instance.PlayerMoney += Reward;
         GameController.instance.PlayerPoint += Mathf.Ceil(Reward * 1.5f);
         StoryUIController.instance.UpdateGoldIndex();
-        //throw new System.NotImplementedException();
     }
 
     public void Die()
@@ -145,15 +143,16 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
             effect.enabled = false;
         }
         NewSpawnController.Instance.CurrentNumOfEnemies--;
-        gameObject.SetActive(false);
+        ObjectPoolController.Instance.Pools[this.id].Release(gameObject);
     }
 
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         SetEnemy();
         Agent = GetComponent<NavMeshAgent>();
-        _destination = GameObject.Find("Destination");
-        Agent.destination = _destination.transform.position;
+        //_destination = GameObject.Find("Destination");
+        //Agent.destination = _destination.transform.position;
+        
         Agent.speed = Speed;
     }
 }

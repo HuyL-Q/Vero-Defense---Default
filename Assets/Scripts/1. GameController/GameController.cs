@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using System;
 
 public enum State { Prestart, Start, End_Defeat, End_Victory, Pause };
 public class PlayerStat
@@ -27,13 +23,15 @@ public class PlayerStatsConverter : JsonConverter<PlayerStat> { }
 public class GameObjectConverter : JsonConverter<SaveGame> { }
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
     int playerLives;
+    [SerializeField]
     float playerMoney;
     float playerPoint;
     State state;
     public bool flag = false;
     public Dictionary<int, bool> HeroList;
-    
+
     public int PlayerLives { get => playerLives; set => playerLives = value; }
     public float PlayerMoney { get => playerMoney; set => playerMoney = value; }
     public float PlayerPoint { get => playerPoint; set => playerPoint = value; }
@@ -56,31 +54,15 @@ public class GameController : MonoBehaviour
     {
         HeroList = new Dictionary<int, bool>();
         State = State.Prestart;
-        ReadStatFromFile();
         StartCoroutine(wait());
-        try 
-        {
-            SoundManagerDetail.PlaySound("GamePlaySound");
-        }
-        catch(Exception E)
-        {
+        SoundManagerDetail.PlaySound("GamePlaySound");
 
-        }
-        
+
     }
     IEnumerator wait()
     {
         yield return new WaitForSeconds(0.6f);
         flag = true;
-    }
-    void ReadStatFromFile()
-    {
-        PlayerStatsConverter statsConverter = new();
-        statsConverter.setCurrentDir(@"\PlayerStats.json");
-        PlayerStat stats = statsConverter.getObjectFromJSON();
-        PlayerLives = stats.Lives;
-        PlayerMoney = stats.Money;
-        PlayerPoint = 0;
     }
 
     // Update is called once per frame
@@ -94,21 +76,8 @@ public class GameController : MonoBehaviour
     }
     public void SaveData()
     {
-        SaveGame.Instance.lives = GameController.instance.PlayerLives;
-        SaveGame.Instance.money = GameController.instance.PlayerMoney;
-        SaveGame.Instance.playerPoint = GameController.instance.PlayerPoint;
-        SaveGame.Instance.state = GameController.instance.State;
-        SaveGame.Instance.stageIndex = NewSpawnController.Instance.WaveIndex - 1;
         GameObjectConverter converter = new GameObjectConverter();
-        converter.setCurrentDir(@"/data.json");
-        List<TowerData> ls = new List<TowerData>();
-        Transform tr = GameObject.Find("Tower In Screen").transform;
-        for (int i = 0; i < tr.childCount; i++)
-        {
-            ls.Add(new TowerData(tr.GetChild(i).gameObject));
-        }
-        SaveGame.Instance.ls = ls;
-        converter.createJSON(SaveGame.Instance);
+        PlayerPrefs.SetString("saveData", converter.createJSONText(SaveGame.Instance));
     }
     public static GameObject FindInActiveObjectByName(string name)
     {
@@ -128,8 +97,8 @@ public class GameController : MonoBehaviour
     public void LoadData()
     {
         GameObjectConverter converter = new GameObjectConverter();
-        converter.setCurrentDir(@"/data.json");
-        SaveGame.Instance = converter.getObjectFromJSON();
+        SaveGame.Instance = new SaveGame();
+        SaveGame.Instance = converter.getObjectfromText(PlayerPrefs.GetString("saveData"));
 
         foreach (TowerData data in SaveGame.Instance.ls)
         {

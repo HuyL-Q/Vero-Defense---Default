@@ -28,14 +28,9 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         GameObjectConverter converter = new GameObjectConverter();
-        converter.setCurrentDir(@"/data.json");
-        if (converter.GetText() == "")
+        if (!PlayerPrefs.HasKey("saveData"))
         {
             GameObject.Find("BackGround").transform.GetChild(1).GetComponent<Button>().interactable = false;// code handle when data is null
         }
-        //else
-        //{
-
-        //}
     }
 }
