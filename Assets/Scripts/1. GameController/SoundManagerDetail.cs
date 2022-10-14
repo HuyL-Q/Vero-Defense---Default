@@ -23,6 +23,7 @@ public class SoundManagerDetail : MonoBehaviour
     }
     public static void PlaySound(string clip)
     {
-        audioSrc.PlayOneShot(Resources.Load<AudioClip>(@"Sound/" + clip));
+        if(audioSrc != null)
+            audioSrc.PlayOneShot(Resources.Load<AudioClip>(@"Sound/" + clip));
     }
 }

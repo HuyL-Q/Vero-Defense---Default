@@ -71,6 +71,7 @@ public class ArcherTower : ATower
         }
         flag = true;
         transform.GetChild(2).localScale = new Vector2(Range, Range);
+        Animator = GetComponentInChildren<Animator>();
         yield return null;
     }
     public override int GetSize()

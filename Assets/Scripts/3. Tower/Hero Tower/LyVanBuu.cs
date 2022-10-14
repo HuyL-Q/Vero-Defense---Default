@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LyVanBuu : ARangeHero
+public class LyVanBuu : HeroTower
 {
     public override void Skill()
     {

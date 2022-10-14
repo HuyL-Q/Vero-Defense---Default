@@ -6,8 +6,7 @@ using UnityEngine;
 public abstract class JsonConverter<T>
 {
     //public string CurrentDirectory = Directory.GetCurrentDirectory();
-    public string CurrentDirectory;
-
+    public string CurrentDirectory = Application.streamingAssetsPath;
     public void createJSON(T Object)
     {
         var settings = new JsonSerializerSettings
@@ -18,6 +17,16 @@ public abstract class JsonConverter<T>
         //Debug.Log(Object.ToString());
         var object_string = JsonConvert.SerializeObject(Object, settings);
         File.WriteAllText(CurrentDirectory, object_string);
+    }
+    public string createJSONText(T Object)
+    {
+        var settings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            MissingMemberHandling = MissingMemberHandling.Ignore
+        };
+        var object_string = JsonConvert.SerializeObject(Object, settings);
+        return object_string;
     }
     public string GetText()
     {
@@ -34,12 +43,11 @@ public abstract class JsonConverter<T>
     }
     public T getObjectFromJSON()
     {
-        Debug.Log(CurrentDirectory);
         T arr2 = JsonConvert.DeserializeObject<T>(File.ReadAllText(CurrentDirectory));
         return arr2;
     }
     public void setCurrentDir(string str)
     {
-        CurrentDirectory = "jar:file://" + Application.dataPath + "/" + str + "!/assets";
+        CurrentDirectory += str;
     }
 }

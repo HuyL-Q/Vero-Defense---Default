@@ -103,7 +103,7 @@ public class StoryUIController : MonoBehaviour
         placementIndex = towerPlacementIndex;
     }
 
-    IEnumerator CheckTowerPrice()// disable button
+    IEnumerator CheckTowerPrice()
     {
         while (true)
         {
@@ -113,7 +113,7 @@ public class StoryUIController : MonoBehaviour
             {
                 archerBuyTowerButton.GetComponent<Button>().interactable = true;
                 if (TowerManager.instance.ArcherPrice > GameController.instance.PlayerMoney||
-                    (archerBuyTowerButton.name.Contains("hero") && GameController.instance.HeroList[int.Parse(archerBuyTowerButton.name.Split("_")[2])]))//disable hero button
+                    (archerBuyTowerButton.name.Contains("hero") && GameController.instance.HeroList[int.Parse(archerBuyTowerButton.name.Split("_")[2])]))
                 {
                     archerBuyTowerButton.GetComponent<Button>().interactable = false;
                 }
