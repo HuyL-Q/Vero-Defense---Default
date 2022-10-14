@@ -137,8 +137,6 @@ public class TowerManager : MonoBehaviour
                     towerLevelSprite.GetChild(i + 1).GetChild(prefix - 1).gameObject.SetActive(true);
                     nextID += "_" + prefix;
                 }
-
-                StartCoroutine(tower.GetComponent<ATower>().SetTower(nextID));
                 break;
             }
         }

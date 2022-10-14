@@ -105,7 +105,10 @@ MonoBehaviour:
   monsters: []
   rangeIndicator: {fileID: 3202431079179712544}
   attackSpeed: 0
+  _towerStat: {fileID: 11400000, guid: b32a5331f51e3804fa6c4d8eb9778c1c, type: 2}
   flag: 0
+  _skillGauge: 0
+  towers: []
 --- !u!1 &3202431079179712544
 GameObject:
   m_ObjectHideFlags: 0

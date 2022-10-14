@@ -1,19 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LyVanBuu : HeroTower
+public class LyVanBuu : ARangeHero
 {
-    public override void Skill()
+    public override IEnumerator Skill()
     {
         throw new System.NotImplementedException();
     }
 
     public override void Start()
     {
-        if(!flag)
-        StartCoroutine(SetTower("tower_hero_4"));
-        Animator = GetComponentInChildren<Animator>();
         base.Start();
-    }   
+    }
 }

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2643637985148022546}
   - component: {fileID: 7238422444107339591}
   - component: {fileID: 2443667825652649810}
+  - component: {fileID: 2146060562605822243}
   m_Layer: 0
   m_Name: Lv1
   m_TagString: Untagged
@@ -137,6 +138,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2146060562605822243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462387093779048732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc05c50f93b6b124ba91827e1ee64b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3604661836897933531
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +240,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -424,7 +437,11 @@ MonoBehaviour:
   monsters: []
   rangeIndicator: {fileID: 6038804418833093635}
   attackSpeed: 0
+  _towerStat: {fileID: 11400000, guid: 345e87e5d4c7a7e4e96709b44ec7e3bd, type: 2}
   flag: 0
+  _skillGauge: 0
+  timer: 0
+  _skillEffect: {fileID: 681160626312696262, guid: f08b582eb88834541a267e46bf0c4c8c, type: 3}
 --- !u!1 &8730803406636125858
 GameObject:
   m_ObjectHideFlags: 0

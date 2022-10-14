@@ -65,6 +65,16 @@ public class GameController : MonoBehaviour
         flag = true;
     }
 
+    void ReadStatFromFile()
+    {
+        PlayerStatsConverter statsConverter = new();
+        statsConverter.setCurrentDir(@"/PlayerStats.json");
+        PlayerStat stats = statsConverter.getObjectFromJSON();
+        PlayerLives = stats.Lives;
+        PlayerMoney = stats.Money;
+        PlayerPoint = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -15,7 +15,6 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
     NavMeshAgent _agent;
     Animator _animator;
     Animation _animation;
-    GameObject _destination;
     [SerializeField]
     float _hp;
     public Slider HealthAmountUI;
@@ -150,7 +149,6 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         Agent = GetComponent<NavMeshAgent>();
         //_destination = GameObject.Find("Destination");
         //Agent.destination = _destination.transform.position;
-        
         Agent.speed = Speed;
     }
 }

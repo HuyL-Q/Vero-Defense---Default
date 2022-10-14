@@ -5,53 +5,44 @@ using UnityEngine.Networking;
 
 public abstract class HeroTower : ATower
 {
-    
-    public bool flag = false;
-
-    public class TowerConverter : JsonConverter<List<TowerJs>> { }
+    private bool _skillReady;
+    private bool _skillActivated;
+    [SerializeField]
+    private int _skillGauge;
     
     Animator _animator;
 
     public Animator Animator { get => _animator; set => _animator = value; }
-    public override int GetSize()
+
+    public override double AttackSpeed
     {
-        return Size;
+        get { return base.AttackSpeed; }
+        set
+        {
+            base.AttackSpeed = value;
+            Animator.speed = (float)(1 / base.AttackSpeed);
+        }
+    }
+    public bool SkillReady { get => _skillReady; set => _skillReady = value; }
+    public bool SkillActivated { get => _skillActivated; set => _skillActivated = value; }
+    public int SkillGauge { get => _skillGauge; set => _skillGauge = value; }
+
+    public override void Awake()
+    {
+        Animator = GetComponentInChildren<Animator>();
+        base.Awake();
     }
     public override void Start()
     {
-        if (GameController.instance.HeroList.GetValueOrDefault(int.Parse(this.ID.Split("_")[2])))
-            SellButton(PlacementIndex);
         base.Start();
+        SkillReady = false;
+        SkillActivated = false;
+        SkillGauge = 0;
+        if (GameController.instance.HeroList.GetValueOrDefault(int.Parse(ID.Split("_")[2])))
+            SellButton(PlacementIndex);
         GameController.instance.HeroList[int.Parse(this.ID.Split("_")[2])] = true;
     }
-    public override IEnumerator SetTower(string id)
-    {
-        PriceToUpgrade.Clear();
-        //import data from json here
-        string[] idSplit = id.Split("_");
-        string nextID = idSplit[0] + "_" + idSplit[1] + "_" + (int.Parse(idSplit[2]) + 1);
-        TowerConverter tc = new TowerConverter();
-        tc.setCurrentDir(@"\TowerStat.json");
-        List<TowerJs> towerList = tc.getObjectFromJSON();
-        foreach (TowerJs tower in towerList)
-        {
-            if (tower.id == id)
-            {
-                ID = tower.id;
-                Damage = tower.attack;
-                Range = tower.range;
-                AttackSpeed = tower.attackSpeed;
-                Price = tower.Cost;
-                Size = tower.height;
-                //Data = true;
-            }
-        }
-        flag = true;
-        transform.GetChild(2).localScale = new Vector2(Range, Range);
-        gameObject.name = ID;
-        yield return null;
-    }
-    public abstract void Skill();
+
     public void SellButton(int placementIndex)
     {
         TowerManager.instance.TowerPlacementParent.transform.GetChild(placementIndex).gameObject.SetActive(true);
@@ -63,9 +54,8 @@ public abstract class HeroTower : ATower
         ShootTimer -= Time.deltaTime;
         if (ShootTimer <= 0f)
         {
-            
             ShootTimer = AttackSpeed;
-            UpdateEnemy();
+            UpdateEnemy(); 
             if (CurrentEnemy != null)
             {
                 Animator.SetBool("IsAttack", true);
@@ -83,5 +73,6 @@ public abstract class HeroTower : ATower
             }
         }
     }
-    
+
+    public abstract IEnumerator Skill();
 }

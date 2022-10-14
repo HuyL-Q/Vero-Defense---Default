@@ -2,18 +2,67 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NguyenVanTuyet : HeroTower
+public class NguyenVanTuyet : AMageHero
 {
-    public override void Skill()
+    bool firstTimeStartBuff;
+    [SerializeField]
+    List<GameObject> towers;
+    private float _buffAmount;
+    public List<GameObject> Towers { get => towers; set => towers = value; }
+    public override void Start()
+    {
+        _buffAmount = 10f;
+        firstTimeStartBuff = true;
+        base.Start();
+    }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Tower"))
+        {
+            if (!firstTimeStartBuff)
+            {
+                ClearBuff();
+            }
+            towers.Add(collision.transform.parent.gameObject);
+            Buff();
+        }
+        base.OnTriggerEnter2D(collision);
+    }
+
+    public override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Tower"))
+        {
+            towers.Remove(collision.transform.parent.gameObject);
+        }
+        base.OnTriggerExit2D(collision);
+    }
+
+    public override void Buff()
+    {
+        //throw new System.NotImplementedException();
+        foreach (GameObject tower in towers)
+        {
+            ATower towerScript = tower.GetComponent<ATower>();
+            towerScript.Damage += (int)_buffAmount;
+            towerScript.AttackSpeed -= _buffAmount/100f;
+        }
+        firstTimeStartBuff = false;
+    }
+
+    public override void ClearBuff()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void Start()
+    private void OnDestroy()
     {
-        if(!flag)
-        StartCoroutine(SetTower("tower_hero_6"));
-        Animator = GetComponentInChildren<Animator>();
-        base.Start();
+        ClearBuff();
+    }
+
+    public override IEnumerator Skill()
+    {
+        throw new System.NotImplementedException();
     }
 }
