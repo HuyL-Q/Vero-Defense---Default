@@ -47,13 +47,12 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         Animator.SetFloat(Magnitude, Agent.velocity.magnitude);
         Animator.SetFloat(Horizontal, Agent.velocity.x);
         Animator.SetFloat(Vertical, Agent.velocity.y);
-        if (Agent.remainingDistance <= 1)
+        if (Agent.remainingDistance <= 0)
         {
             Agent.isStopped = true;
             AttackToCastle();
         }
     }
-
 
     public abstract IEnumerator SetEnemy(string id);
 
