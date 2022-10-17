@@ -33,7 +33,7 @@ public class HeroTowerFactory : AbstractFactoryTower
         var towerGO = Instantiate(heroTowerPrefab[int.Parse(idls[2])-1], tower);
         towerGO.transform.position = position;
         towerGO.GetComponent<HeroTower>().PlacementIndex = placementIndex;
-        StartCoroutine(towerGO.GetComponent<HeroTower>().SetTower(id));
+        //StartCoroutine(towerGO.GetComponent<HeroTower>().SetTower(id));
         GameController.instance.PlayerMoney -= towerGO.GetComponent<HeroTower>().Price;
         StoryUIController.instance.UpdateGoldIndex();
         //towerGO.GetComponent<SpriteRenderer>().sprite//level up

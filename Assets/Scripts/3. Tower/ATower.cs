@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -20,13 +19,15 @@ public abstract class ATower : MonoBehaviour, ITower
     private double attackSpeed;
     private int price;
     private int size;
-    private List<String> special;
+    private List<string> special;
     private Vector3 shootPosition;
     private GameObject currentEnemy;
     public ObjectPool<GameObject> objectPool;
     private double shootTimer;
     private int spriteIndex;
-    List<TowerJs> idList = new List<TowerJs>();
+    [SerializeField]
+    public TowerScriptableObject _towerStat;
+
     public string ID
     {
         get { return id; }
@@ -40,9 +41,13 @@ public abstract class ATower : MonoBehaviour, ITower
     public float Range
     {
         get { return range; }
-        set { range = value; }
+        set
+        {
+            range = value;
+            RangeIndicator.transform.localScale = new Vector2(Range, Range);
+        }
     }
-    public double AttackSpeed
+    public virtual double AttackSpeed
     {
         get { return attackSpeed; }
         set { attackSpeed = value; }
@@ -70,50 +75,14 @@ public abstract class ATower : MonoBehaviour, ITower
     }
     public List<string> Special { get => special; set => special = value; }
     public int SpriteIndex { get => spriteIndex; set => spriteIndex = value; }
-    public List<TowerJs> IdList { get => idList; set => idList = value; }
     public int PlacementIndex { get => placementIndex; set => placementIndex = value; }
     public GameObject RangeIndicator { get => rangeIndicator; }
     List<int> priceToUpgrade = new List<int>();
     public List<int> PriceToUpgrade { get => priceToUpgrade; }
     public double ShootTimer { get => shootTimer; set => shootTimer = value; }
+    public List<GameObject> Monsters { get => monsters; set => monsters = value; }
+    public bool flag = false;
 
-    public class TowerJs
-    {
-        public string id;
-        public int attack;
-        public double attackSpeed;
-        public float range;
-        private List<string> special;
-        private int cost;
-        public int width;
-        public int height;
-        public string bulletID;//Not in use currently
-
-        public int Cost { get => cost; set => cost = value; }
-        public List<string> Special { get => special; set => special = value; }
-        public TowerJs(string id, int attack, double attackSpeed, float range, List<string> special, int cost, int width, int height, string bulletID)
-        {
-            this.id = id;
-            this.attack = attack;
-            this.attackSpeed = attackSpeed;
-            this.range = range;
-            this.special = special;
-            this.cost = cost;
-            this.width = width;
-            this.height = height;
-            this.bulletID = bulletID;
-        }
-    }
-    //public virtual void ChangeSprite(int i)
-    //{
-    //    SpriteIndex += i;
-    //    gameObject.GetComponent<SpriteRenderer>().sprite = towerUgradeSprites[SpriteIndex];
-    //}
-    //public virtual Sprite GetUpgradeSprite(int i)
-    //{
-    //    return towerUgradeSprites[SpriteIndex + i];
-    //}
-    public abstract IEnumerator SetTower(string id);
     public virtual void Attack()
     {
         //Vector3.
@@ -121,11 +90,12 @@ public abstract class ATower : MonoBehaviour, ITower
         try
         {
             arrowGO = objectPool.Get();
-        }catch(Exception ex)
+        }
+        catch (Exception ex)
         {
             return;
         }
-//arrowGO.transform.parent = GameObject.Find("Arrow").transform;
+        //arrowGO.transform.parent = GameObject.Find("Arrow").transform;
         arrowGO.transform.localScale = new(5, 5, 5);
         arrowGO.transform.position = ShootPosition;
         //arrowGO.transform.localScale = transform.localScale;
@@ -133,64 +103,40 @@ public abstract class ATower : MonoBehaviour, ITower
         arrowGO.GetComponent<Arrow>().TargetAiming = CurrentEnemy;
         arrowGO.GetComponent<Arrow>().OnRelease = obj => objectPool.Release(obj);
     }
-    public abstract int GetSize();
-    public virtual int GetNextCost(string id)
-    {
-        int nextLevelCost = 0;
-        foreach (TowerJs i in IdList)
-        {
-            if (i.id.Contains(id))
-                nextLevelCost = i.Cost;
-        }
-        return nextLevelCost;
-    }
-    public virtual List<string> UpgradeTowerID(string id)
-    {
-        //get id of tower need to upgrade
-        List<string> idU = new List<string>();
-        foreach (TowerJs i in IdList)
-        {
-            if (i.id.Contains(id))
-            {
-                idU.Add(i.id);
-            }
-        }
-        return idU;
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
-            monsters.Add(collision.gameObject);
+            Monsters.Add(collision.gameObject);
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
             GameObject monster = collision.gameObject;
             if (monster.GetComponent<AEnemy>().HP <= 0)
             {
-                monsters.Remove(monster);
+                Monsters.Remove(monster);
             }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Minions"))
         {
-            monsters.Remove(collision.gameObject);
+            Monsters.Remove(collision.gameObject);
         }
     }
 
     public virtual void UpdateEnemy()
     {
-        if (monsters.Count > 0)
+        if (Monsters.Count > 0)
         {
-            CurrentEnemy = monsters[0];
+            CurrentEnemy = Monsters[0];
         }
         else
         {
@@ -198,9 +144,17 @@ public abstract class ATower : MonoBehaviour, ITower
         }
     }
 
+    public virtual void Awake()
+    {
+        if (!flag)
+        {
+            SetTower();
+        }
+    }
+
     public virtual void Start()
     {
-        monsters = new();
+        Monsters = new();
         shootTimer = AttackSpeed;
         objectPool = new ObjectPool<GameObject>(() => { return Instantiate(bullet, GameObject.Find("Arrow").transform); }
                                                 , obj => { obj.SetActive(true); }
@@ -209,6 +163,14 @@ public abstract class ATower : MonoBehaviour, ITower
                                                 , false
                                                 , 10
                                                 , 20);
+    }
+    public void SetTower()
+    {
+        ID = _towerStat._id;
+        Damage = _towerStat._attack;
+        Range = _towerStat._range;
+        AttackSpeed = _towerStat._attackSpeed;
+        Price = _towerStat._price;
     }
     public virtual void Update()
     {

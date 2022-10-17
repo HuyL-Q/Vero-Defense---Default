@@ -668,6 +668,7 @@ MonoBehaviour:
   monsters: []
   rangeIndicator: {fileID: 6799803504589756475}
   attackSpeed: 0
+  _towerStat: {fileID: 11400000, guid: 6414d9278153ec24fb137a1dbb4c48dc, type: 2}
   flag: 0
 --- !u!50 &6130261473284268244
 Rigidbody2D:

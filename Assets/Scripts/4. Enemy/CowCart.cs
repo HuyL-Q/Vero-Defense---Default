@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CowCart : AEnemy
 {
-
     // Update is called once per frame
     public override void Start()
     {

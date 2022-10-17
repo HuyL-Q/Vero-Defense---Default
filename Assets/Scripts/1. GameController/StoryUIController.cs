@@ -210,8 +210,8 @@ public class StoryUIController : MonoBehaviour
         SoundManagerDetail.PlaySound("SellTower");
         CloseUpgrade_SellPanel();
         TowerManager.instance.TowerPlacementParent.transform.GetChild(placementIndex).gameObject.GetComponent<CircleCollider2D>().enabled = true;
-        if(currentTower.name.Contains("hero"))
-            GameController.instance.HeroList[int.Parse(currentTower.name.Split('_')[2])] = false;
+        if(currentTower.GetComponent<ATower>().ID.Contains("hero"))
+            GameController.instance.HeroList[int.Parse(currentTower.GetComponent<ATower>().ID.Split('_')[2])] = false;
         Destroy(currentTower);
         GameController.instance.PlayerMoney += priceToSell;
         UpdateGoldIndex();
@@ -256,8 +256,7 @@ public class StoryUIController : MonoBehaviour
     {
         StopCoroutine(CheckTowerPrice());
         CloseBuyTower();
-        TowerManager.instance.SetTower(placementIndex, index);
-                
+        TowerManager.instance.SetTower(placementIndex, index);      
     }
 
     public void PauseButton()

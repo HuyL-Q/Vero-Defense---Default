@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.IO;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ public abstract class JsonConverter<T>
 {
     //public string CurrentDirectory = Directory.GetCurrentDirectory();
     public string CurrentDirectory = Application.streamingAssetsPath;
+    
     public void createJSON(T Object)
     {
         var settings = new JsonSerializerSettings

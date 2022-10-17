@@ -20,7 +20,6 @@ public class ArcherTowerFactory : AbstractFactoryTower
         var towerGO = Instantiate(basicTowerPrefab, tower);
         towerGO.transform.position = position;
         towerGO.GetComponent<ArcherTower>().PlacementIndex = placementIndex;
-        StartCoroutine(towerGO.GetComponent<ArcherTower>().SetTower(id));
         GameController.instance.PlayerMoney -= towerGO.GetComponent<ArcherTower>().Price;
         StoryUIController.instance.UpdateGoldIndex();
         string[] idls = id.Split('_');  

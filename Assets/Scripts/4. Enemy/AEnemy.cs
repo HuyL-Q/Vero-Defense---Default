@@ -15,7 +15,6 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
     NavMeshAgent _agent;
     Animator _animator;
     Animation _animation;
-    GameObject _destination;
     [SerializeField]
     float _hp;
     public Slider HealthAmountUI;
@@ -61,15 +60,13 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         Animator.SetFloat(Magnitude, Agent.velocity.magnitude);
         Animator.SetFloat(Horizontal, Agent.velocity.x);
         Animator.SetFloat(Vertical, Agent.velocity.y);
-        if (Agent.remainingDistance <= 1)
+        if (Agent.remainingDistance <= 0)
         {
             Agent.isStopped = true;
             AttackToCastle();
         }
         HealthAmountUI.value = HP / MaxHP;
     }
-
-
 
     public void SetEnemy(EnemyScriptableObject? dat = null)
     {
@@ -113,6 +110,7 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
             Agent.isStopped = true;
             //GiveReward();
             Animator.SetTrigger(Dead);
+            Die();
         }
     }
 
@@ -152,7 +150,6 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
         Agent = GetComponent<NavMeshAgent>();
         //_destination = GameObject.Find("Destination");
         //Agent.destination = _destination.transform.position;
-        
         Agent.speed = Speed;
     }
 }
