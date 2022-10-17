@@ -15,6 +15,6 @@ MonoBehaviour:
   _id: tower_hero_1
   _attack: 12
   _attackSpeed: 0.8
-  _range: 2
+  _range: 5
   _price: 120
   _special: []

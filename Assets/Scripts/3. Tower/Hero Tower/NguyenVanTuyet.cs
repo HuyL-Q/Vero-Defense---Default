@@ -46,14 +46,19 @@ public class NguyenVanTuyet : AMageHero
         {
             ATower towerScript = tower.GetComponent<ATower>();
             towerScript.Damage += (int)_buffAmount;
-            towerScript.AttackSpeed -= _buffAmount/100f;
+            towerScript.AttackSpeed -= _buffAmount / 100f;
         }
         firstTimeStartBuff = false;
     }
 
     public override void ClearBuff()
     {
-        throw new System.NotImplementedException();
+        foreach (GameObject tower in towers)
+        {
+            ATower towerScript = tower.GetComponent<ATower>();
+            towerScript.Damage -= (int)_buffAmount;
+            towerScript.AttackSpeed += _buffAmount / 100f;
+        }
     }
 
     private void OnDestroy()

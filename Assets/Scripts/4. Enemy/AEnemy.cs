@@ -110,6 +110,7 @@ public abstract class AEnemy : MonoBehaviour, IEnemy
             Agent.isStopped = true;
             //GiveReward();
             Animator.SetTrigger(Dead);
+            Die();
         }
     }
 

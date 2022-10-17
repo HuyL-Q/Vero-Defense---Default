@@ -5,7 +5,7 @@ public class VoDinhTu : AMeleeHero
 {
     public override IEnumerator Skill()
     {
-        throw new System.NotImplementedException();
+        yield return null;
     }
 
     public override void Start()
