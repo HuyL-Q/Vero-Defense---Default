@@ -77,6 +77,7 @@ MonoBehaviour:
   _towerStat: {fileID: 11400000, guid: c7c61425efcac4a438db9a4615132b5f, type: 2}
   flag: 0
   _skillGauge: 0
+  ArrowSprite: {fileID: 7306157938997681088, guid: f8a1655b38a100e49b885b89f15528fc, type: 3}
 --- !u!1 &1534932737357474124
 GameObject:
   m_ObjectHideFlags: 0

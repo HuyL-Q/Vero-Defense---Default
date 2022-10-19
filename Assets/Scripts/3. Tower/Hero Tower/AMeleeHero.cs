@@ -5,9 +5,10 @@ public abstract class AMeleeHero : HeroTower
     public float timer;
     public override void Attack()
     {
-        foreach (GameObject enemy in Monsters)
+        //foreach (GameObject enemy in Monsters)
+        for(int i = 0; i< Monsters.Count; i++)
         {
-            var script = enemy.GetComponent<AEnemy>();
+            var script = Monsters[i].GetComponent<AEnemy>();
             script.ReceiveDamage(Damage);
         }
         //Animator.SetBool("IsAttack", false);
